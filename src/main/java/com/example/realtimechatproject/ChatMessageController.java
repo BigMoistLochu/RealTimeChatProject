@@ -5,6 +5,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ChatMessageController {
@@ -18,10 +20,24 @@ public class ChatMessageController {
         return chatMessage;
     }
 
-    //mozemy zrobic tak ze w pokoju gdzie chcemy gadac np z Konradem kazdy sie podpina(ale to wtedy
-    //kazdy kto ma otwarty chat widzi to co ktos inny pisze, dlatego musi zostac utworzony
-    //pokoj w momencie kiedy otwieramy czat i tylko 2 osoby sa w nim
-    //czyli
+    @GetMapping("/chatPage")
+    public String GetChatPage()
+    {
+        return "index.html";
+    }
+
+    @PostMapping("/form")
+    public String GetFormPage()
+    {
+        System.out.println("xd");
+        return "index.html";
+    }
+
+    @GetMapping("/start")
+    public String GetMainPage()
+    {
+        return "login.html";
+    }
 
 
 }

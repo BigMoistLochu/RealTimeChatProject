@@ -11,6 +11,8 @@ public class ChatMessage {
 
     private String user;
 
+    private String userColor;
+
     public ChatMessage() {}
 
     public ChatMessage(String value) {
