@@ -1,11 +1,14 @@
-package com.example.realtimechatproject;
+package com.example.realtimechatproject.controllers;
 
 
+import com.example.realtimechatproject.ChatMessage;
+import com.example.realtimechatproject.models.Form;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,18 +29,7 @@ public class ChatMessageController {
         return "index.html";
     }
 
-    @PostMapping("/form")
-    public String GetFormPage()
-    {
-        System.out.println("xd");
-        return "index.html";
-    }
 
-    @GetMapping("/start")
-    public String GetMainPage()
-    {
-        return "login.html";
-    }
 
 
 }
