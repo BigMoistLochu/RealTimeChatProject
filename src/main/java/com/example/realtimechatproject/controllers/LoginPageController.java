@@ -1,7 +1,7 @@
 package com.example.realtimechatproject.controllers;
 
 import com.example.realtimechatproject.models.Form;
-import com.example.realtimechatproject.validationsForm.LoginPageSecurity;
+import com.example.realtimechatproject.validationsForm.LoginFormSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginPageController {
 
-    LoginPageSecurity loginPageSecurity;
+    LoginFormSecurity loginFormSecurity;
 
     @Autowired
-    public LoginPageController(LoginPageSecurity loginPageSecurity)
+    public LoginPageController(LoginFormSecurity loginFormSecurity)
     {
-        this.loginPageSecurity = loginPageSecurity;
+        this.loginFormSecurity = loginFormSecurity;
     }
 
     @GetMapping("/start")
@@ -33,7 +33,7 @@ public class LoginPageController {
     public String GetFormPage(@ModelAttribute Form form)
     {
         // tutaj bedzie Validowany
-        if(loginPageSecurity.checkForm(form))
+        if(loginFormSecurity.checkForm(form))
 
             //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
 
