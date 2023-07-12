@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class LoginFormSecurity {
+public class LoginFormSecurity{
 
     private Form form;
 

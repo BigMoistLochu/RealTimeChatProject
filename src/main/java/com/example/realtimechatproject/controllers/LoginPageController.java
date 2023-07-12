@@ -30,19 +30,24 @@ public class LoginPageController {
 
 
     @PostMapping("/form")
-    public String GetFormPage(@ModelAttribute Form form)
+    public String GetFormPage(@ModelAttribute Form form,Model model)
     {
         // tutaj bedzie Validowany
+
         if(loginFormSecurity.checkForm(form))
 
             //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
 
-
             return "index.html";
         else
-        return "xddd";
+        {   String invalide = "invalids smth";
+            model.addAttribute("invalid",invalide);
+            return "login.html";
+        }
+
 
     }
+
 
 
 
