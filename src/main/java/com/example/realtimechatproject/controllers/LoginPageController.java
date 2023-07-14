@@ -42,6 +42,7 @@ public class LoginPageController {
         else
         {   String invalide = "invalids smth";
             model.addAttribute("invalid",invalide);
+
             return "login.html";
         }
 

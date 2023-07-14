@@ -21,6 +21,8 @@ public class UserEntity {
 
     private String haslo;
 
+
+
     public UserEntity(String email, String login, String haslo) {
         this.email = email;
         this.login = login;

@@ -6,6 +6,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.security.spec.KeySpec;
+
 @SpringBootApplication
 public class RealTimeChatProjectApplication implements CommandLineRunner {
 
@@ -23,6 +30,25 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 
         UserEntity entity1 = new UserEntity("47@wp.pl","4744","mati1");
         userRepository.save(entity1);
+
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        String password = entity1.getHaslo();
+        byte[] message = messageDigest.digest(password.getBytes());
+
+        BigInteger bigInteger = new BigInteger(1,message);
+
+
+        System.out.println(bigInteger.toString(16));
+
+        if(bigInteger.toString(16).equals("75f3af6270ac666850054b12620f7442"))
+        {
+            System.out.println("poprawne");
+        }
+        //kazdy uzytkownik bedzie mial zahashowane haslo ktore bedzie
+        //przy rejestracji haslo bedzie hashowane i przypisywane do konta
+        //teraz jak bedziemy sie logowac to bedziemy sprawdzac czy podane haslo/hash jest juz w bazie
+        //jesli tak to dostaje cookie z hashem ktory za kazdym razem bedzie odpytywal baze
+
         System.out.println(userRepository.findAll());
 
     }
