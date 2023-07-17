@@ -25,11 +25,13 @@ public class ChatMessageController {
         this.simpMessagingTemplate = simpMessagingTemplate;
     }
 
-    //@DestinationVariable String canalId
-    @MessageMapping("/chat")
+
+    @MessageMapping("/chat/{id}")
 //    @SendTo("/topic/messages")
-    public void get(ChatMessage chatMessage)
+    public void get(@DestinationVariable String id,ChatMessage chatMessage)
     {
+        //to wysyla do brokera /topic/messages
+        System.out.println(id);
         simpMessagingTemplate.convertAndSend("/topic/messages",chatMessage);
 //        return chatMessage;
     }
