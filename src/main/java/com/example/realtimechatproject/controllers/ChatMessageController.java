@@ -25,16 +25,20 @@ public class ChatMessageController {
         this.simpMessagingTemplate = simpMessagingTemplate;
     }
 
-
-    @MessageMapping("/chat/{id}")
+//    @DestinationVariable String id
+    @MessageMapping("/chat")
 //    @SendTo("/topic/messages")
-    public void get(@DestinationVariable String id,ChatMessage chatMessage)
+    public void get(ChatMessage chatMessage)
     {
         //to wysyla do brokera /topic/messages
-        System.out.println(id);
+        //w przyszlosci stworzymy /topic/id wiec w tubie bedzie wiecej socketow
+//        System.out.println(id);
         simpMessagingTemplate.convertAndSend("/topic/messages",chatMessage);
-//        return chatMessage;
+//      return chatMessage;
+
     }
+
+
 
     @GetMapping("/chatPage")
     public String GetChatPage()

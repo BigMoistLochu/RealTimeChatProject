@@ -5,6 +5,7 @@ import com.example.realtimechatproject.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -17,6 +18,7 @@ import java.security.spec.KeySpec;
 public class RealTimeChatProjectApplication implements CommandLineRunner {
 
     UserRepository userRepository;
+
     public RealTimeChatProjectApplication(UserRepository userRepository)
     {
         this.userRepository = userRepository;
@@ -48,6 +50,9 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
         //przy rejestracji haslo bedzie hashowane i przypisywane do konta
         //teraz jak bedziemy sie logowac to bedziemy sprawdzac czy podane haslo/hash jest juz w bazie
         //jesli tak to dostaje cookie z hashem ktory za kazdym razem bedzie odpytywal baze
+
+
+
 
         System.out.println(userRepository.findAll());
 

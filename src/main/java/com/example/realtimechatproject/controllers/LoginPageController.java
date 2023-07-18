@@ -28,6 +28,14 @@ public class LoginPageController {
         return "login.html";
     }
 
+    @GetMapping("/chatView")
+    public String GetChatPageController()
+    {
+
+
+        return "chat.html";
+    }
+
 
     @PostMapping("/form")
     public String GetFormPage(@ModelAttribute Form form,Model model)
