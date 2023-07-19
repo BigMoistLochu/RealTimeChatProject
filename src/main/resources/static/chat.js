@@ -30,18 +30,14 @@ function showMessage(value, user, userColor) {
     // Tworzenie treści wiadomości
     var messageContent = document.createTextNode(value);
 
-    // Tworzenie <span> dla czasu
-    var timeSpan = document.createElement('span');
-    timeSpan.classList.add('msg_time');
-    timeSpan.textContent = "8:40 AM, Today";
+
 
     // Ustawienie koloru tekstu w divie <div class="msg_cotainer">
-    msgDiv.style.color = userColor;
+
 
     // Składanie elementów razem
     imgDiv.appendChild(img);
     msgDiv.appendChild(messageContent);
-    msgDiv.appendChild(timeSpan);
 
     mainDiv.appendChild(imgDiv);
     mainDiv.appendChild(msgDiv);
@@ -57,7 +53,7 @@ function showMessage(value, user, userColor) {
 
 function connect() {
     client = Stomp.client('ws://localhost:8080/chat');
-    color = getRandomColor();
+
     client.connect({}, function (frame) {
         client.subscribe("/topic/messages", function(message){
             showMessage(JSON.parse(message.body).value, JSON.parse(message.body).user, JSON.parse(message.body).userColor)
@@ -70,15 +66,6 @@ function sendMessage() {
     var messageToSend = document.getElementById('messageToSend').value;
     // var user = document.getElementById('user').value;
     // 'user': user,
-    client.send("/app/chat", {}, JSON.stringify({'value': messageToSend, 'userColor': color}) );
+    client.send("/app/chat", {}, JSON.stringify({'value': messageToSend}) );
     document.getElementById('messageToSend').value = "";
-}
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
 }

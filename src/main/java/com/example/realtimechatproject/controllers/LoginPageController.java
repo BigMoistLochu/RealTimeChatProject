@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginPageController {
 
     LoginFormSecurity loginFormSecurity;
+    LoginPageService loginPageService;
 
     @Autowired
-    public LoginPageController(LoginFormSecurity loginFormSecurity)
+    public LoginPageController(LoginFormSecurity loginFormSecurity,LoginPageService loginPageService)
     {
         this.loginFormSecurity = loginFormSecurity;
+        this.loginPageService = loginPageService;
     }
 
     @GetMapping("/start")
@@ -32,7 +34,6 @@ public class LoginPageController {
     public String GetChatPageController()
     {
 
-
         return "chat.html";
     }
 
@@ -40,21 +41,7 @@ public class LoginPageController {
     @PostMapping("/form")
     public String GetFormPage(@ModelAttribute Form form,Model model)
     {
-        // tutaj bedzie Validowany
-
-        if(loginFormSecurity.checkForm(form))
-
-            //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
-
-            return "index.html";
-        else
-        {   String invalide = "invalids smth";
-            model.addAttribute("invalid",invalide);
-
-            return "login.html";
-        }
-
-
+        return loginPageService.getPageForm(form,model);
     }
 
 
