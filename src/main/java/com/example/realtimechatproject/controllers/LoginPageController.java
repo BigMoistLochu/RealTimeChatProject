@@ -1,6 +1,7 @@
 package com.example.realtimechatproject.controllers;
 
 import com.example.realtimechatproject.models.Form;
+import com.example.realtimechatproject.services.LoginPageService;
 import com.example.realtimechatproject.validationsForm.LoginFormSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,18 +23,26 @@ public class LoginPageController {
         this.loginPageService = loginPageService;
     }
 
-    @GetMapping("/start")
+
+
+
+    @GetMapping("/")
     public String GetMainPage(Model model)
     {
-
         model.addAttribute("form", new Form());
         return "login.html";
     }
 
-    @GetMapping("/chatView")
+    @GetMapping("/register")
+    public String GetRegisterPage(Model model)
+    {
+        model.addAttribute("form", new Form());
+        return "register.html";
+    }
+
+    @GetMapping("/talk")
     public String GetChatPageController()
     {
-
         return "chat.html";
     }
 

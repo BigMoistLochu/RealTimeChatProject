@@ -1,8 +1,7 @@
-package com.example.realtimechatproject.controllers;
+package com.example.realtimechatproject.services;
 
 import com.example.realtimechatproject.models.Form;
 import com.example.realtimechatproject.validationsForm.LoginFormSecurity;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -20,14 +19,12 @@ public class LoginPageService {
     public String getPageForm(Form form, Model model)
     {
         if(loginFormSecurity.checkForm(form))
-
             //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
-
-            return "index.html";
+            return "chat.html";
         else
-        {   String invalide = "invalids smth";
+        {
+            String invalide = "invalids smth";
             model.addAttribute("invalid",invalide);
-
             return "login.html";
         }
     }

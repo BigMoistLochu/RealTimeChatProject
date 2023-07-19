@@ -1,4 +1,4 @@
-package com.example.realtimechatproject;
+package com.example.realtimechatproject.models;
 
 import lombok.Getter;
 import lombok.Setter;

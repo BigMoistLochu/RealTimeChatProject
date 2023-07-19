@@ -29,6 +29,5 @@ public class UserEntity {
         this.haslo = haslo;
     }
 
-    public UserEntity() {
-    }
+    public UserEntity() {}
 }
