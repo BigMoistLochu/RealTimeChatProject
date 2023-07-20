@@ -1,7 +1,7 @@
 package com.example.realtimechatproject.services;
 
-import com.example.realtimechatproject.models.Form;
-import com.example.realtimechatproject.validationsForm.LoginFormSecurity;
+import com.example.realtimechatproject.models.LoginForm;
+import com.example.realtimechatproject.validationsForm.LoginFormValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -9,22 +9,23 @@ import org.springframework.ui.Model;
 public class LoginPageService {
 
 
-    LoginFormSecurity loginFormSecurity;
+    private LoginFormValidator loginFormSecurity;
 
-    public LoginPageService(LoginFormSecurity loginFormSecurity)
+    public LoginPageService(LoginFormValidator loginFormSecurity)
     {
         this.loginFormSecurity = loginFormSecurity;
     }
 
-    public String getPageForm(Form form, Model model)
+    public String getValidForm(LoginForm form, Model model)
     {
         if(loginFormSecurity.checkForm(form))
             //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
             return "chat.html";
         else
         {
-            String invalide = "invalids smth";
+            String invalide = "Wrong Email or Password";
             model.addAttribute("invalid",invalide);
+            model.addAttribute("LoginForm", new LoginForm());
             return "login.html";
         }
     }

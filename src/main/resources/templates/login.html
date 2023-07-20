@@ -36,7 +36,7 @@
 
         <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
-            <form action="#" th:action="@{/form}" th:object="${form}" method="Post" >
+            <form action="#" th:action="@{/}" th:object="${LoginForm}" method="Post" >
 
 
               <!-- Email input -->
@@ -63,6 +63,8 @@
 
 
             </form>
+
+            <p th:text="${invalid}" />
           </div>
         </div>
       </div>

@@ -7,15 +7,15 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class Form {
+public class LoginForm {
 
 
     private String login;
     private String haslo;
 
-    public Form(){}
+    public LoginForm(){}
 
-    public Form(String login,String haslo) {
+    public LoginForm(String login, String haslo) {
         this.login = login;
         this.haslo = haslo;
     }

@@ -1,8 +1,8 @@
 package com.example.realtimechatproject.controllers;
 
-import com.example.realtimechatproject.models.Form;
+import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.services.LoginPageService;
-import com.example.realtimechatproject.validationsForm.LoginFormSecurity;
+import com.example.realtimechatproject.validationsForm.LoginFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginPageController {
 
-    LoginFormSecurity loginFormSecurity;
+    LoginFormValidator loginFormValidator;
     LoginPageService loginPageService;
 
     @Autowired
-    public LoginPageController(LoginFormSecurity loginFormSecurity,LoginPageService loginPageService)
+    public LoginPageController(LoginFormValidator loginFormValidator, LoginPageService loginPageService)
     {
-        this.loginFormSecurity = loginFormSecurity;
+        this.loginFormValidator = loginFormValidator;
         this.loginPageService = loginPageService;
     }
 
@@ -29,28 +29,28 @@ public class LoginPageController {
     @GetMapping("/")
     public String GetMainPage(Model model)
     {
-        model.addAttribute("form", new Form());
+        model.addAttribute("LoginForm", new LoginForm());
         return "login.html";
     }
 
     @GetMapping("/register")
     public String GetRegisterPage(Model model)
     {
-        model.addAttribute("form", new Form());
+        model.addAttribute("LoginForm", new LoginForm());
         return "register.html";
     }
 
     @GetMapping("/talk")
-    public String GetChatPageController()
+    public String GetChatPage()
     {
         return "chat.html";
     }
 
 
-    @PostMapping("/form")
-    public String GetFormPage(@ModelAttribute Form form,Model model)
+    @PostMapping("/")
+    public String GetFormPage(@ModelAttribute LoginForm form, Model model)
     {
-        return loginPageService.getPageForm(form,model);
+        return loginPageService.getValidForm(form,model);
     }
 
 

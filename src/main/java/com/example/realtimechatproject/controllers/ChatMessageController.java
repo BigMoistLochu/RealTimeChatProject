@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ChatMessageController {
 
-    SimpMessagingTemplate simpMessagingTemplate;
+    private SimpMessagingTemplate simpMessagingTemplate;
 
     @Autowired
     public ChatMessageController(SimpMessagingTemplate simpMessagingTemplate)

@@ -1,22 +1,25 @@
 package com.example.realtimechatproject.validationsForm;
 
 
-import com.example.realtimechatproject.models.Form;
+import com.example.realtimechatproject.models.LoginForm;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class LoginFormSecurity{
+public class LoginFormValidator {
 
-    private Form form;
+    private LoginForm form;
 
 
-    public boolean checkForm(Form form)
+    public boolean checkForm(LoginForm form)
     {
         this.form = form;
 
         if(checkLength()
-                && checkEmail())
+                && checkEmail()
+                && isBlank()
+                && checkCorrectLetter()
+        )
             return true;
         else
             return false;
@@ -39,6 +42,22 @@ public class LoginFormSecurity{
         if(!form.getLogin().contains("@"))
             return false;
         return true;
+    }
+
+    private boolean isBlank()
+    {
+        if(form.getHaslo().isBlank() || form.getLogin().isBlank())
+            return false;
+        return true;
+    }
+
+    private boolean checkCorrectLetter()
+    {
+        if(form.getLogin().matches(".*[!#$%^&*()_+\\-=].*") || form.getHaslo().matches(".*[!#$%^&*()_+\\-=].*"))
+            return false;
+        return true;
+
+
     }
 
 
