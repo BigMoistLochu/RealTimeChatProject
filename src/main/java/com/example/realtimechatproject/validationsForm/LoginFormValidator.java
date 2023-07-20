@@ -10,7 +10,7 @@ public class LoginFormValidator {
 
     private LoginForm form;
 
-    String s = "banan";
+
 
 
 
