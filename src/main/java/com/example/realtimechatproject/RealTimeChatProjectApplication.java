@@ -30,7 +30,7 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        UserEntity entity1 = new UserEntity("47@wp.pl","4744","mati1");
+        UserEntity entity1 = new UserEntity("4744@wp.pl","mati1");
         userRepository.save(entity1);
 
         MessageDigest messageDigest = MessageDigest.getInstance("MD5");

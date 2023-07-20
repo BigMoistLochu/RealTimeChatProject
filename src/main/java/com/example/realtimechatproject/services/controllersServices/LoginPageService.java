@@ -1,7 +1,8 @@
-package com.example.realtimechatproject.services;
+package com.example.realtimechatproject.services.controllersServices;
 
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.validationsForm.LoginFormValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -11,6 +12,7 @@ public class LoginPageService {
 
     private LoginFormValidator loginFormSecurity;
 
+    @Autowired
     public LoginPageService(LoginFormValidator loginFormSecurity)
     {
         this.loginFormSecurity = loginFormSecurity;
@@ -29,4 +31,10 @@ public class LoginPageService {
             return "login.html";
         }
     }
+
+
+
+
+
+
 }

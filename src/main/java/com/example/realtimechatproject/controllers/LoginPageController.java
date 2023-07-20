@@ -1,7 +1,7 @@
 package com.example.realtimechatproject.controllers;
 
 import com.example.realtimechatproject.models.LoginForm;
-import com.example.realtimechatproject.services.LoginPageService;
+import com.example.realtimechatproject.services.controllersServices.LoginPageService;
 import com.example.realtimechatproject.validationsForm.LoginFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,8 +48,15 @@ public class LoginPageController {
 
 
     @PostMapping("/")
-    public String GetFormPage(@ModelAttribute LoginForm form, Model model)
+    public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model)
     {
+        return loginPageService.getValidForm(form,model);
+    }
+
+    @PostMapping("/register")
+    public String GetValidRegisterFormPage(@ModelAttribute LoginForm form, Model model)
+    {
+        //to do zmiany
         return loginPageService.getValidForm(form,model);
     }
 

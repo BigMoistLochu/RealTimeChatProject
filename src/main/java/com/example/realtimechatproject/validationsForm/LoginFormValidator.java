@@ -10,9 +10,16 @@ public class LoginFormValidator {
 
     private LoginForm form;
 
+    String s = "banan";
+
+
+
 
     public boolean checkForm(LoginForm form)
     {
+
+
+
         this.form = form;
 
         if(checkLength()
@@ -34,7 +41,6 @@ public class LoginFormValidator {
                 && form.getHaslo().length()<25)
                 return true;
         else return false;
-
     }
 
     private boolean checkEmail()
@@ -56,8 +62,6 @@ public class LoginFormValidator {
         if(form.getLogin().matches(".*[!#$%^&*()_+\\-=].*") || form.getHaslo().matches(".*[!#$%^&*()_+\\-=].*"))
             return false;
         return true;
-
-
     }
 
 
