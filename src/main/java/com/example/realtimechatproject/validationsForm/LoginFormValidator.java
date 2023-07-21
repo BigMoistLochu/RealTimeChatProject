@@ -22,46 +22,34 @@ public class LoginFormValidator {
 
         this.form = form;
 
-        if(checkLength()
+        return checkLength()
                 && checkEmail()
                 && isBlank()
-                && checkCorrectLetter()
-        )
-            return true;
-        else
-            return false;
+                && checkCorrectLetter();
     }
 
 
     private boolean checkLength()
     {
-        if(form.getLogin().length()>0
-                && form.getHaslo().length()>0
-                && form.getLogin().length()<25
-                && form.getHaslo().length()<25)
-                return true;
-        else return false;
+        return form.getLogin().length() > 0
+                && form.getHaslo().length() > 0
+                && form.getLogin().length() < 25
+                && form.getHaslo().length() < 25;
     }
 
     private boolean checkEmail()
     {
-        if(!form.getLogin().contains("@"))
-            return false;
-        return true;
+        return form.getLogin().contains("@");
     }
 
     private boolean isBlank()
     {
-        if(form.getHaslo().isBlank() || form.getLogin().isBlank())
-            return false;
-        return true;
+        return !form.getHaslo().isBlank() && !form.getLogin().isBlank();
     }
 
     private boolean checkCorrectLetter()
     {
-        if(form.getLogin().matches(".*[!#$%^&*()_+\\-=].*") || form.getHaslo().matches(".*[!#$%^&*()_+\\-=].*"))
-            return false;
-        return true;
+        return !form.getLogin().matches(".*[!#$%^&*()_+\\-=].*") && !form.getHaslo().matches(".*[!#$%^&*()_+\\-=].*");
     }
 
 
