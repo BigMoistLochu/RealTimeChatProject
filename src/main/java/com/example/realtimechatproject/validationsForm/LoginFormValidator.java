@@ -11,14 +11,8 @@ public class LoginFormValidator {
     private LoginForm form;
 
 
-
-
-
-
     public boolean checkForm(LoginForm form)
     {
-
-
 
         this.form = form;
 
