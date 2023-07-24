@@ -13,11 +13,11 @@ class LoginFormSecurityTest {
     @Test
     void checkFormShouldReturnFalse() {
         //given
-        LoginFormValidator loginFormSecurityForcheckFormShouldReturnFalse = new LoginFormValidator();
+        FormValidator loginFormSecurityForcheckFormShouldReturnFalse = new FormValidator();
         LoginForm form = new LoginForm();
         form.setLogin("xd");
         form.setHaslo("ape");
         //then
-        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkForm(form));
+        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkLoginForm(form));
     }
 }

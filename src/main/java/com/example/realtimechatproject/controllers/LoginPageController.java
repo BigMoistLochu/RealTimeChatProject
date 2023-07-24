@@ -2,7 +2,9 @@ package com.example.realtimechatproject.controllers;
 
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
-import com.example.realtimechatproject.validationsForm.LoginFormValidator;
+import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
+import com.example.realtimechatproject.validationsForm.FormValidator;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +13,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@AllArgsConstructor
 public class LoginPageController {
 
-    LoginFormValidator loginFormValidator;
-    LoginPageService loginPageService;
+    private FormValidator formValidator;
+    private LoginPageService loginPageService;
 
-    @Autowired
-    public LoginPageController(LoginFormValidator loginFormValidator, LoginPageService loginPageService)
-    {
-        this.loginFormValidator = loginFormValidator;
-        this.loginPageService = loginPageService;
-    }
+    private RegisterPageService registerPageService;
+
+
 
 
 

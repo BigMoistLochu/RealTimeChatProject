@@ -1,9 +1,8 @@
 package com.example.realtimechatproject.services.controllersServices;
 
-import com.example.realtimechatproject.models.LoginForm;
-import com.example.realtimechatproject.validationsForm.RegisterFormValidator;
+import com.example.realtimechatproject.models.RegisterForm;
+import com.example.realtimechatproject.validationsForm.FormValidator;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -12,14 +11,13 @@ import org.springframework.ui.Model;
 public class RegisterPageService {
 
 
-    RegisterFormValidator registerFormValidator;
+    private FormValidator formValidator;
 
 
-
-    public boolean checkRegisterForm(LoginForm form, Model model)
+    public boolean checkRegisterForm(RegisterForm form, Model model)
     {
 
-        if(registerFormValidator.checkForm(form)){
+        if(formValidator.checkRegisterForm(form)){
             return false;
         }
 

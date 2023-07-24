@@ -2,19 +2,33 @@ package com.example.realtimechatproject.validationsForm;
 
 
 import com.example.realtimechatproject.models.LoginForm;
+import com.example.realtimechatproject.models.RegisterForm;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class LoginFormValidator {
+public class FormValidator {
 
     private LoginForm form;
 
+    private RegisterForm registerForm;
 
-    public boolean checkForm(LoginForm form)
+
+    public boolean checkLoginForm(LoginForm form)
     {
 
         this.form = form;
+
+        return checkLength()
+                && checkEmail()
+                && isBlank()
+                && checkCorrectLetter();
+    }
+
+    public boolean checkRegisterForm(RegisterForm registerForm)
+    {
+
+        this.registerForm = registerForm;
 
         return checkLength()
                 && checkEmail()

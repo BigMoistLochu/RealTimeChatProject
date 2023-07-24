@@ -1,26 +1,23 @@
 package com.example.realtimechatproject.services.controllersServices;
 
 import com.example.realtimechatproject.models.LoginForm;
-import com.example.realtimechatproject.validationsForm.LoginFormValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.realtimechatproject.validationsForm.FormValidator;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 @Service
+@AllArgsConstructor
 public class LoginPageService {
 
 
-    private LoginFormValidator loginFormSecurity;
+    private FormValidator formValidator;
 
-    @Autowired
-    public LoginPageService(LoginFormValidator loginFormSecurity)
-    {
-        this.loginFormSecurity = loginFormSecurity;
-    }
+
 
     public String checkLoginForm(LoginForm form, Model model)
     {
-        if(loginFormSecurity.checkForm(form))
+        if(formValidator.checkLoginForm(form))
             //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
             return "chat.html";
         else
