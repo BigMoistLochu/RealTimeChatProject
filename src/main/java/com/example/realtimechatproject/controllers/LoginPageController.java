@@ -50,14 +50,14 @@ public class LoginPageController {
     @PostMapping("/")
     public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model)
     {
-        return loginPageService.getValidForm(form,model);
+        return loginPageService.checkLoginForm(form,model);
     }
 
     @PostMapping("/register")
     public String GetValidRegisterFormPage(@ModelAttribute LoginForm form, Model model)
     {
         //to do zmiany
-        return loginPageService.getValidForm(form,model);
+        return loginPageService.checkLoginForm(form,model);
     }
 
 

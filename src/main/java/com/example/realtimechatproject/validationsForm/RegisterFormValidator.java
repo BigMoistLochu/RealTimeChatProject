@@ -8,12 +8,9 @@ public class RegisterFormValidator {
 
     private LoginForm form;
 
-    public boolean checkRegisterForm(LoginForm form)
+    public boolean checkForm(LoginForm form)
     {
         this.form= form;
-
-
-
 
         return true;
     }

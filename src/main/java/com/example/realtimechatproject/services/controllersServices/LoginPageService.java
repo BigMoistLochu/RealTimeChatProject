@@ -18,7 +18,7 @@ public class LoginPageService {
         this.loginFormSecurity = loginFormSecurity;
     }
 
-    public String getValidForm(LoginForm form, Model model)
+    public String checkLoginForm(LoginForm form, Model model)
     {
         if(loginFormSecurity.checkForm(form))
             //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
