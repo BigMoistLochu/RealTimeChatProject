@@ -1,6 +1,7 @@
 package com.example.realtimechatproject.controllers;
 
 import com.example.realtimechatproject.models.LoginForm;
+import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
 import com.example.realtimechatproject.validationsForm.FormValidator;
@@ -36,7 +37,7 @@ public class LoginPageController {
     @GetMapping("/register")
     public String GetRegisterPage(Model model)
     {
-        model.addAttribute("LoginForm", new LoginForm());
+        model.addAttribute("RegisterForm", new RegisterForm());
         return "register.html";
     }
 
@@ -54,10 +55,11 @@ public class LoginPageController {
     }
 
     @PostMapping("/register")
-    public String GetValidRegisterFormPage(@ModelAttribute LoginForm form, Model model)
+    public String GetValidRegisterFormPage(@ModelAttribute RegisterForm form, Model model)
     {
         //to do zmiany
-        return loginPageService.checkLoginForm(form,model);
+        //dodac
+        return registerPageService.checkRegisterForm(form,model);
     }
 
 

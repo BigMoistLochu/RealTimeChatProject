@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FormValidator {
 
-    private LoginForm form;
+    private LoginForm loginForm;
 
     private RegisterForm registerForm;
 
@@ -17,47 +17,52 @@ public class FormValidator {
     public boolean checkLoginForm(LoginForm form)
     {
 
-        this.form = form;
+        this.loginForm = form;
+        String login = loginForm.getLogin();
+        String haslo = loginForm.getHaslo();
 
-        return checkLength()
-                && checkEmail()
-                && isBlank()
-                && checkCorrectLetter();
+
+        return checkLength(login, haslo)
+                && checkEmail(login)
+                && isBlank(login,haslo)
+                && checkCorrectLetter(login,haslo);
     }
 
-    public boolean checkRegisterForm(RegisterForm registerForm)
+    public boolean checkRegisterForm(RegisterForm form)
     {
 
-        this.registerForm = registerForm;
+        this.registerForm = form;
+        String login = registerForm.getLogin();
+        String haslo = registerForm.getHaslo();
 
-        return checkLength()
-                && checkEmail()
-                && isBlank()
-                && checkCorrectLetter();
+        return checkLength(login, haslo)
+                && checkEmail(login)
+                && isBlank(login,haslo)
+                && checkCorrectLetter(login,haslo);
     }
 
 
-    private boolean checkLength()
+    private boolean checkLength(String login,String haslo)
     {
-        return form.getLogin().length() > 0
-                && form.getHaslo().length() > 0
-                && form.getLogin().length() < 25
-                && form.getHaslo().length() < 25;
+        return login.length() > 0
+                && haslo.length() > 0
+                && login.length() < 25
+                && haslo.length() < 25;
     }
 
-    private boolean checkEmail()
+    private boolean checkEmail(String login)
     {
-        return form.getLogin().contains("@");
+        return login.contains("@");
     }
 
-    private boolean isBlank()
+    private boolean isBlank(String login,String haslo)
     {
-        return !form.getHaslo().isBlank() && !form.getLogin().isBlank();
+        return !haslo.isBlank() && !login.isBlank();
     }
 
-    private boolean checkCorrectLetter()
+    private boolean checkCorrectLetter(String login,String haslo)
     {
-        return !form.getLogin().matches(".*[!#$%^&*()_+\\-=].*") && !form.getHaslo().matches(".*[!#$%^&*()_+\\-=].*");
+        return !login.matches(".*[!#$%^&*()_+\\-=].*") && !haslo.matches(".*[!#$%^&*()_+\\-=].*");
     }
 
 
