@@ -12,6 +12,7 @@ public class HashingPassword {
         MessageDigest messageDigest = MessageDigest.getInstance("MD5");
         byte[] message = messageDigest.digest(password.getBytes());
         BigInteger bigInteger = new BigInteger(1,message);
+
         System.out.println(bigInteger.toString(16));
 
         if(bigInteger.toString(16).equals("75f3af6270ac666850054b12620f7442"))
