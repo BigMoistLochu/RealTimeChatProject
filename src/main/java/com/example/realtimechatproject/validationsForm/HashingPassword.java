@@ -8,20 +8,19 @@ public class HashingPassword {
 
     private String password;
     private BigInteger bigInteger;
-    private MessageDigest messageDigest;
 
-    public HashingPassword(String password){
-        this.password = password;
-    }
+    public HashingPassword(String password) throws NoSuchAlgorithmException {
 
-    public void hashThePassword() throws NoSuchAlgorithmException {
-        if(!password.isBlank())
+        if(password.length()==0)
         {
-             this.messageDigest= MessageDigest.getInstance("MD5");
-            //tutaj juz jest zahashowane
-            this.bigInteger = new BigInteger(1,messageDigest.digest(password.getBytes()));
+            throw new NumberFormatException();
         }
+
+
+        bigInteger = new BigInteger(1,MessageDigest.getInstance("MD5").digest(password.getBytes()));
     }
+
+
 
     public String getHashedPassword()
     {

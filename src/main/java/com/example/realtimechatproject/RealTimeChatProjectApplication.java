@@ -48,11 +48,11 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 //            System.out.println("poprawne");
 //        }
 
-        HashingPassword hashingPassword = new HashingPassword(entity1.getHaslo());
-        hashingPassword.hashThePassword();
+        HashingPassword hashingPassword = new HashingPassword("");
 
-        HashingPassword hashingPassword2 = new HashingPassword(entity1.getHaslo());
-        hashingPassword2.hashThePassword();
+
+        HashingPassword hashingPassword2 = new HashingPassword(entity1.getLogin());
+
         System.out.println(hashingPassword.getHashedPassword());
         System.out.println(hashingPassword2.getHashedPassword());
         if(hashingPassword.getHashedPassword().equals(hashingPassword2.getHashedPassword()))
