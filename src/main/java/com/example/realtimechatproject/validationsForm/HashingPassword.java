@@ -6,18 +6,26 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashingPassword {
 
-    private String password = "haslo123";
+    private String password;
+    private BigInteger bigInteger;
+    private MessageDigest messageDigest;
 
-    public HashingPassword() throws NoSuchAlgorithmException {
-        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-        byte[] message = messageDigest.digest(password.getBytes());
-        BigInteger bigInteger = new BigInteger(1,message);
+    public HashingPassword(String password){
+        this.password = password;
+    }
 
-        System.out.println(bigInteger.toString(16));
-
-        if(bigInteger.toString(16).equals("75f3af6270ac666850054b12620f7442"))
+    public void hashThePassword() throws NoSuchAlgorithmException {
+        if(!password.isBlank())
         {
-            System.out.println("poprawne");
+             this.messageDigest= MessageDigest.getInstance("MD5");
+            //tutaj juz jest zahashowane
+            this.bigInteger = new BigInteger(1,messageDigest.digest(password.getBytes()));
         }
     }
+
+    public String getHashedPassword()
+    {
+        return bigInteger.toString(16);
+    }
+
 }
