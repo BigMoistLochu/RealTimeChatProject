@@ -16,7 +16,6 @@ public class HashingPassword {
             throw new NumberFormatException();
         }
 
-
         bigInteger = new BigInteger(1,MessageDigest.getInstance("MD5").digest(password.getBytes()));
     }
 
