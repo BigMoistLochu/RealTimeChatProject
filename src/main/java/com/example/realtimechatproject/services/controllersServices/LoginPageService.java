@@ -22,8 +22,7 @@ public class LoginPageService {
             return "chat.html";
         else
         {
-            String invalide = "Wrong Email or Password";
-            model.addAttribute("invalid",invalide);
+            model.addAttribute("invalid","Wrong Email or Password");
             model.addAttribute("LoginForm", new LoginForm());
             return "login.html";
         }
