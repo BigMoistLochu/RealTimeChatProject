@@ -26,8 +26,8 @@ public class RegisterPageService {
         }
         else
         {
-            String invalide = "Wrong Email or Password";
-            model.addAttribute("invalid",invalide);
+
+            model.addAttribute("invalid","Wrong Email or Password");
             model.addAttribute("RegisterForm", new RegisterForm());
             return "register.html";
         }
