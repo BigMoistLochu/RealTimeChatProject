@@ -57,8 +57,7 @@ public class LoginPageController {
     @PostMapping("/register")
     public String GetValidRegisterFormPage(@ModelAttribute RegisterForm form, Model model)
     {
-        //to do zmiany
-        //dodac
+
         return registerPageService.checkRegisterForm(form,model);
     }
 
