@@ -4,7 +4,10 @@ import com.example.realtimechatproject.models.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity,Long> {
-    UserEntity getAllByHaslo();
+    UserEntity getFirstByHaslo(String haslo);
+    List<UserEntity> getAllByHaslo();
 }
