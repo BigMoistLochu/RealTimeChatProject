@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<UserEntity,Long> {
     UserEntity getFirstByHaslo(String haslo);
     List<UserEntity> getAllByHaslo();
+    List<UserEntity> getAllById(Integer id);
 }
