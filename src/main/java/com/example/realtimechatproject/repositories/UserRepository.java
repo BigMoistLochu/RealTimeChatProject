@@ -13,4 +13,5 @@ public interface UserRepository extends CrudRepository<UserEntity,Long> {
     UserEntity getFirstById(Integer id);
 
     UserEntity getFirstBySurname(String surname);
+    List<UserEntity> getAllBySurname(String surname);
 }
