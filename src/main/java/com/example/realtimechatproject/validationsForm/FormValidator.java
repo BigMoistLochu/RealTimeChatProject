@@ -34,8 +34,6 @@ public class FormValidator {
         this.registerForm = form;
         String login = registerForm.getLogin();
         String haslo = registerForm.getHaslo();
-        String name = registerForm.getName();
-        String username = registerForm.getUsername();
 
 
         return checkLength(login, haslo)
