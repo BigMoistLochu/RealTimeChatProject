@@ -17,15 +17,15 @@ public class LoginPageService {
 
     public String checkLoginForm(LoginForm form, Model model)
     {
-        if(formValidator.checkLoginForm(form))
-            //po weryfikacji tego co przyszlo przechodzimy do sprawdzenia czy w bazie znajduje sie taki uzytkownik
-            return "chat.html";
-        else
+
+        if(!formValidator.checkLoginForm(form))
         {
             model.addAttribute("invalid","Wrong Email or Password");
             model.addAttribute("LoginForm", new LoginForm());
             return "login.html";
         }
+
+        return "chat.html";
     }
 
 
