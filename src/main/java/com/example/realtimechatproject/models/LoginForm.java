@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 public class LoginForm {
 
-
     private String login;
     private String haslo;
 

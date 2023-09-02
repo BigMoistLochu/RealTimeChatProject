@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class LoginPageController {
 
-    private FormValidator formValidator;
+
     private LoginPageService loginPageService;
 
     private RegisterPageService registerPageService;
