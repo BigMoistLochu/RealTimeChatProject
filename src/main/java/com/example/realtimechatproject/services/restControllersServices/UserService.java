@@ -2,22 +2,16 @@ package com.example.realtimechatproject.services.restControllersServices;
 
 import com.example.realtimechatproject.models.UserEntity;
 import com.example.realtimechatproject.repositories.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     UserRepository userRepository;
-
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-
 
     public List<UserEntity> getListOfUsers()
     {

@@ -48,7 +48,7 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 //            System.out.println("poprawne");
 //        }
 
-        HashingPassword hashingPassword = new HashingPassword("");
+        HashingPassword hashingPassword = new HashingPassword("dsds");
 
 
         HashingPassword hashingPassword2 = new HashingPassword(entity1.getLogin());
