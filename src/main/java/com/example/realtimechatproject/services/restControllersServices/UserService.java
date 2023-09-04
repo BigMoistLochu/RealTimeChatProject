@@ -33,4 +33,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public UserEntity getUserById(Long id)
+    {
+       return userRepository.getFirstById(id);
+    }
+
 }

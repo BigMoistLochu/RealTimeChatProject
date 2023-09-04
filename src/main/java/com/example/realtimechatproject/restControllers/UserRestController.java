@@ -22,9 +22,15 @@ public class UserRestController {
         return userService.getListOfUsers();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/delete/{id}")
     public void deleteUserById(@PathVariable("id") Long userId)
     {
         userService.deleteUserById(userId);
+    }
+
+    @GetMapping("/user/get/{id}")
+    public UserEntity getUserById(@PathVariable("id") Long userId)
+    {
+        return userService.getUserById(userId);
     }
 }
