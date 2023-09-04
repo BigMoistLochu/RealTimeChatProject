@@ -4,6 +4,7 @@ import com.example.realtimechatproject.models.UserEntity;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +20,11 @@ public class UserRestController {
     public List<UserEntity> getAllUsers()
     {
         return userService.getListOfUsers();
+    }
+
+    @GetMapping("/user/{id}")
+    public void deleteUserById(@PathVariable("id") Long userId)
+    {
+        userService.deleteUserById(userId);
     }
 }
