@@ -20,4 +20,15 @@ class LoginFormSecurityTest {
         //then
         assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkLoginForm(form));
     }
+
+    @Test
+    void checkFormShouldReturnTrue() {
+        //given
+        FormValidator loginFormSecurityForcheckFormShouldReturnFalse = new FormValidator();
+        LoginForm form = new LoginForm();
+        form.setLogin("xd@wp.pl");
+        form.setHaslo("ape");
+        //then
+        assertTrue(loginFormSecurityForcheckFormShouldReturnFalse.checkLoginForm(form));
+    }
 }
