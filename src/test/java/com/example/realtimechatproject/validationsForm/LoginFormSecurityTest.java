@@ -11,7 +11,7 @@ class LoginFormSecurityTest {
 
 
     @Test
-    void checkFormShouldReturnFalse() {
+    void checkLoginFormValidatorShouldReturnFalseWhenDataIsIncorrect() {
         //given
         FormValidator loginFormSecurityForcheckFormShouldReturnFalse = new FormValidator();
         LoginForm form = new LoginForm();
@@ -22,7 +22,7 @@ class LoginFormSecurityTest {
     }
 
     @Test
-    void checkFormShouldReturnTrue() {
+    void checkLoginFormShouldReturnTrueWhenDataIsCorrect() {
         //given
         FormValidator loginFormSecurityForcheckFormShouldReturnFalse = new FormValidator();
         LoginForm form = new LoginForm();
