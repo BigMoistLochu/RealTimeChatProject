@@ -41,5 +41,6 @@ class LoginFormSecurityTest {
         form.setHaslo("");
         //then
         assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkLoginForm(form));
+        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkLoginForm(form));
     }
 }
