@@ -13,10 +13,12 @@ public class HashingPassword {
     private BigInteger bigInteger;
 
 
-
-
     public HashingPassword(String password){
+        this.password = password;
+    }
 
+    public void HashThePassword(String password)
+    {
         try
         {
             if(password.length()==0)
@@ -24,14 +26,13 @@ public class HashingPassword {
                 throw new NumberFormatException();
             }
 
+
             bigInteger = new BigInteger(1,MessageDigest.getInstance("MD5").digest(password.getBytes()));
         }
         catch(Exception e)
         {
-            log.info("problem in:" + getClass() + "in constructor");
+            log.info("Length of the password is 0");
         }
-
-
     }
 
 
