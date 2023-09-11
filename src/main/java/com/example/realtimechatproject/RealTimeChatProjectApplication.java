@@ -10,6 +10,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -49,6 +50,8 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 //        }
 
         HashingPassword hashingPassword = new HashingPassword("dsds");
+
+
 
 
         HashingPassword hashingPassword2 = new HashingPassword(entity1.getLogin());

@@ -28,4 +28,14 @@ class FormValidatorTest {
 
         assertTrue(formValidator.checkRegisterForm(registerForm));
     }
+
+    @Test
+    void checkRegisterFormMethodShouldReturnFalseIfLoginIsBlank() {
+
+        RegisterForm registerForm = new RegisterForm();
+        registerForm.setLogin("");
+        registerForm.setHaslo("randompassword");
+
+        assertFalse(formValidator.checkRegisterForm(registerForm));
+    }
 }
