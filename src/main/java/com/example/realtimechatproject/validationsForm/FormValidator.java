@@ -25,7 +25,7 @@ public class FormValidator {
         return checkLength(login, haslo)
                 && checkEmail(login)
                 && isBlank(login,haslo)
-                && checkCorrectLetter(login,haslo);
+                && checkCorrectLetters(login,haslo);
     }
 
     public boolean checkRegisterForm(RegisterForm form)
@@ -39,7 +39,7 @@ public class FormValidator {
         return checkLength(login, haslo)
                 && checkEmail(login)
                 && isBlank(login,haslo)
-                && checkCorrectLetter(login,haslo);
+                && checkCorrectLetters(login,haslo);
     }
 
 
@@ -61,7 +61,7 @@ public class FormValidator {
         return !haslo.isBlank() && !login.isBlank();
     }
 
-    private boolean checkCorrectLetter(String login,String haslo)
+    private boolean checkCorrectLetters(String login, String haslo)
     {
         return !login.matches(".*[!#$%^&*()_+\\-=].*") && !haslo.matches(".*[!#$%^&*()_+\\-=].*");
     }
