@@ -18,7 +18,7 @@ public class LoginPageService {
     public String checkLoginForm(LoginForm form, Model model)
     {
 
-        if(!formValidator.checkLoginForm(form))
+        if(!formValidator.checkForm(form))
         {
             model.addAttribute("invalid","Wrong Email or Password");
             model.addAttribute("LoginForm", new LoginForm());

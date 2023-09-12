@@ -56,15 +56,15 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 
         HashingPassword hashingPassword2 = new HashingPassword(entity1.getLogin());
 
-        System.out.println(hashingPassword.getHashedPassword());
-        System.out.println(hashingPassword2.getHashedPassword());
-        if(hashingPassword.getHashedPassword().equals(hashingPassword2.getHashedPassword()))
-        {
-            System.out.println("oba sa rowne");
-        }
-        else {
-            System.out.println("nierowne");
-        }
+//        System.out.println(hashingPassword.getHashedPassword());
+//        System.out.println(hashingPassword2.getHashedPassword());
+//        if(hashingPassword.getHashedPassword().equals(hashingPassword2.getHashedPassword()))
+//        {
+//            System.out.println("oba sa rowne");
+//        }
+//        else {
+//            System.out.println("nierowne");
+//        }
 
         //kazdy uzytkownik bedzie mial zahashowane haslo ktore bedzie
         //przy rejestracji haslo bedzie hashowane i przypisywane do konta

@@ -17,7 +17,7 @@ public class RegisterPageService {
 
     public String checkRegisterForm(RegisterForm form, Model model)
     {
-        if(!formValidator.checkRegisterForm(form))
+        if(!formValidator.checkForm(form))
         {
             model.addAttribute("invalid","Wrong Email or Password");
             model.addAttribute("RegisterForm", new RegisterForm());

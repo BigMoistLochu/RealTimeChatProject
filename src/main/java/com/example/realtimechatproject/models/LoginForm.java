@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginForm {
+public class LoginForm implements IForm{
 
     private String login;
     private String haslo;

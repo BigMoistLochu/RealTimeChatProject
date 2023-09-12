@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-public class RegisterForm {
+public class RegisterForm implements IForm{
 
     private String login;
     private String haslo;
@@ -15,6 +15,8 @@ public class RegisterForm {
     private String name;
 
     private String username;
+
+
 
 
 

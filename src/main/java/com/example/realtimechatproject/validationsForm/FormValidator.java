@@ -1,39 +1,22 @@
 package com.example.realtimechatproject.validationsForm;
 
 
-import com.example.realtimechatproject.models.LoginForm;
-import com.example.realtimechatproject.models.RegisterForm;
+import com.example.realtimechatproject.models.IForm;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class FormValidator {
+public class FormValidator <T extends IForm>{
 
-    private LoginForm loginForm;
-
-    private RegisterForm registerForm;
+    private T Form;
 
 
-    public boolean checkLoginForm(LoginForm form)
+    public boolean checkForm(T form)
     {
 
-        this.loginForm = form;
-        String login = loginForm.getLogin();
-        String haslo = loginForm.getHaslo();
-
-
-        return checkLength(login, haslo)
-                && checkEmail(login)
-                && isBlank(login,haslo)
-                && checkCorrectLetters(login,haslo);
-    }
-
-    public boolean checkRegisterForm(RegisterForm form)
-    {
-
-        this.registerForm = form;
-        String login = registerForm.getLogin();
-        String haslo = registerForm.getHaslo();
+        this.Form = form;
+        String login = Form.getLogin();
+        String haslo = Form.getHaslo();
 
 
         return checkLength(login, haslo)
