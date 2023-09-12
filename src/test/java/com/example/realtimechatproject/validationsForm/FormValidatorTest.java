@@ -48,4 +48,16 @@ class FormValidatorTest {
 
         assertFalse(formValidator.checkRegisterForm(registerForm));
     }
+
+    @Test
+    void checkRegisterFormMethodShouldReturnFalseIfPasswordIsToLong() {
+
+        RegisterForm registerForm = new RegisterForm();
+        registerForm.setLogin("MoreThan25CharacterIsIncorrect");
+        registerForm.setHaslo("NormalPass");
+
+        assertFalse(formValidator.checkRegisterForm(registerForm));
+    }
+
+
 }
