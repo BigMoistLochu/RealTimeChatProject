@@ -18,7 +18,7 @@ class LoginFormSecurityTest {
         form.setLogin("xd");
         form.setHaslo("ape");
         //then
-        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkForm(form));
+        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.validate(form));
     }
 
     @Test
@@ -29,7 +29,7 @@ class LoginFormSecurityTest {
         form.setLogin("xd@wp.pl");
         form.setHaslo("ape");
         //then
-        assertTrue(loginFormSecurityForcheckFormShouldReturnFalse.checkForm(form));
+        assertTrue(loginFormSecurityForcheckFormShouldReturnFalse.validate(form));
     }
 
     @Test
@@ -40,6 +40,6 @@ class LoginFormSecurityTest {
         form.setLogin("xd@wp.pl");
         form.setHaslo("");
         //then
-        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.checkForm(form));
+        assertFalse(loginFormSecurityForcheckFormShouldReturnFalse.validate(form));
     }
 }

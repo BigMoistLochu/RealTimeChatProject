@@ -38,4 +38,14 @@ public class UserService {
        return userRepository.getFirstById(id);
     }
 
+    public UserEntity getUserByLogin(String login)
+    {
+        return userRepository.getFirstByLogin(login);
+    }
+
+    public Boolean isUserByLogin(String login)
+    {
+        return userRepository.existsByLogin(login);
+    }
+
 }

@@ -1,6 +1,4 @@
 package com.example.realtimechatproject.validationsForm;
-
-
 import com.example.realtimechatproject.models.IForm;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +9,7 @@ public class FormValidator <T extends IForm>{
     private T Form;
 
 
-    public boolean checkForm(T form)
+    public boolean validate(T form)
     {
 
         this.Form = form;

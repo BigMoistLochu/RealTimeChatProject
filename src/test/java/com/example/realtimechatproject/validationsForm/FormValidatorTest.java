@@ -16,7 +16,7 @@ class FormValidatorTest {
         registerForm.setLogin("474!");
         registerForm.setHaslo("randompassword");
 
-        assertFalse(formValidator.checkRegisterForm(registerForm));
+        assertFalse(formValidator.validate(registerForm));
     }
 
     @Test
@@ -26,7 +26,7 @@ class FormValidatorTest {
         registerForm.setLogin("474@wp.pl");
         registerForm.setHaslo("randompassword");
 
-        assertTrue(formValidator.checkRegisterForm(registerForm));
+        assertTrue(formValidator.validate(registerForm));
     }
 
     @Test
@@ -36,7 +36,7 @@ class FormValidatorTest {
         registerForm.setLogin("");
         registerForm.setHaslo("randompassword");
 
-        assertFalse(formValidator.checkRegisterForm(registerForm));
+        assertFalse(formValidator.validate(registerForm));
     }
 
     @Test
@@ -46,7 +46,7 @@ class FormValidatorTest {
         registerForm.setLogin("randomLogin");
         registerForm.setHaslo("");
 
-        assertFalse(formValidator.checkRegisterForm(registerForm));
+        assertFalse(formValidator.validate(registerForm));
     }
 
     @Test
@@ -56,7 +56,7 @@ class FormValidatorTest {
         registerForm.setLogin("NormalLogin");
         registerForm.setHaslo("MoreThan25CharacterIsIncorrect");
 
-        assertFalse(formValidator.checkRegisterForm(registerForm));
+        assertFalse(formValidator.validate(registerForm));
     }
 
     @Test
@@ -66,7 +66,7 @@ class FormValidatorTest {
         registerForm.setLogin("MoreThan25CharacterIsIncorrect");
         registerForm.setHaslo("NormalPass");
 
-        assertFalse(formValidator.checkRegisterForm(registerForm));
+        assertFalse(formValidator.validate(registerForm));
     }
 
 

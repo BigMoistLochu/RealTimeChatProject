@@ -17,12 +17,15 @@ public class RegisterPageService {
 
     public String checkRegisterForm(RegisterForm form, Model model)
     {
-        if(!formValidator.checkForm(form))
+
+        if(!formValidator.validate(form))
         {
             model.addAttribute("invalid","Wrong Email or Password");
             model.addAttribute("RegisterForm", new RegisterForm());
             return "register.html";
         }
+
+        //check czy nie istnieje w bazie danych(jesli tak to daj model ze uzytkownik juz istnie, jesli nie to przejdz do hashowania
         model.addAttribute("LoginForm", new LoginForm());
         return "login.html";
     }
