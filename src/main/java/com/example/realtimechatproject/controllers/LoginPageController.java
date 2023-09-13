@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.NoSuchAlgorithmException;
+
 @Controller
 @AllArgsConstructor
 public class LoginPageController {
@@ -55,8 +57,7 @@ public class LoginPageController {
     }
 
     @PostMapping("/register")
-    public String GetValidRegisterFormPage(@ModelAttribute RegisterForm form, Model model)
-    {
+    public String ValidRegisterFormPage(@ModelAttribute RegisterForm form, Model model) throws NoSuchAlgorithmException {
 
         return registerPageService.checkRegisterForm(form,model);
     }

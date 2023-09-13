@@ -13,6 +13,4 @@ public class LoginForm implements IForm{
     private String haslo;
 
 
-
-
 }

@@ -3,7 +3,6 @@ package com.example.realtimechatproject.services.restControllersServices;
 import com.example.realtimechatproject.models.UserEntity;
 import com.example.realtimechatproject.repositories.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -25,6 +24,7 @@ public class UserService {
         userEntity.setSurname(user.getSurname());
         userEntity.setLogin(user.getLogin());
         userEntity.setHaslo(user.getHaslo());
+        userEntity.setToken(user.getToken());
         userRepository.save(userEntity);
     }
 
@@ -43,7 +43,7 @@ public class UserService {
         return userRepository.getFirstByLogin(login);
     }
 
-    public Boolean isUserByLogin(String login)
+    public Boolean isUserExists(String login)
     {
         return userRepository.existsByLogin(login);
     }

@@ -14,7 +14,7 @@ public class RegisterForm implements IForm{
 
     private String name;
 
-    private String username;
+    private String surname;
 
 
 

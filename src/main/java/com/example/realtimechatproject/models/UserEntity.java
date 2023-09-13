@@ -26,6 +26,8 @@ public class UserEntity {
 
     private String surname;
 
+    private String token;
+
 
 
     public UserEntity(String login, String haslo) {
