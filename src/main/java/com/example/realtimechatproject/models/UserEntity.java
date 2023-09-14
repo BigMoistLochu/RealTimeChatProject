@@ -1,10 +1,7 @@
 package com.example.realtimechatproject.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Getter
@@ -35,5 +32,21 @@ public class UserEntity {
         this.haslo = haslo;
     }
 
+    public UserEntity(String login, String haslo,String name,String surname,String token) {
+        this.login = login;
+        this.haslo = haslo;
+        this.name = name;
+        this.surname = surname;
+        this.token = token;
+    }
+
     public UserEntity() {}
+
+    @Transient
+    public static UserEntityDto builder()
+    {
+        return new UserEntityDto();
+    }
+
+
 }

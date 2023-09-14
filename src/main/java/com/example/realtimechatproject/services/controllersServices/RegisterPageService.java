@@ -46,13 +46,13 @@ public class RegisterPageService {
 
         //wiemy ze formularz jest git,wiemy ze user nie istnieje wiec pozostaje nam zahashowac haslo
         String newToken = hashService.HashAndGetHashEmail(form.getLogin());
-        UserEntity user = new UserEntity();
-        user.setHaslo(form.getHaslo());
-        user.setLogin(form.getLogin());
-        user.setName(form.getName());
-        user.setSurname(form.getSurname());
-        user.setToken(newToken);
-        userService.addUser(user);
+
+        userService.addUser(UserEntity.builder()
+                .Login(form.getLogin())
+                .Haslo(form.getHaslo())
+                .Name(form.getName())
+                .Surname(form.getSurname())
+                .Token(newToken).build());
 
         //zwroc login jesli wszystko jest git
         model.addAttribute("LoginForm", new LoginForm());
