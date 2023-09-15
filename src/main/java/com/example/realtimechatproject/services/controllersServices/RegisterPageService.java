@@ -3,10 +3,9 @@ package com.example.realtimechatproject.services.controllersServices;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.models.UserEntity;
-import com.example.realtimechatproject.services.hashingService.HashService;
+import com.example.realtimechatproject.services.hashingService.TokenManagerService;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validationsForm.FormValidator;
-import com.example.realtimechatproject.validationsForm.HashingEmail;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -22,7 +21,7 @@ public class RegisterPageService {
 
     private UserService userService;
 
-    private HashService hashService;
+    private TokenManagerService tokenManagerService;
 
 
 
@@ -45,7 +44,7 @@ public class RegisterPageService {
         }
 
         //wiemy ze formularz jest git,wiemy ze user nie istnieje wiec pozostaje nam zahashowac haslo
-        String newToken = hashService.HashAndGetHashEmail(form.getLogin());
+        String newToken = tokenManagerService.GenerateNewToken(form.getLogin());
 
         userService.addUser(UserEntity.builder()
                 .Login(form.getLogin())
