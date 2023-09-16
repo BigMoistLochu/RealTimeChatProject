@@ -25,6 +25,8 @@ public class LoginPageService {
             return "login.html";
         }
 
+
+
         return "chat.html";
     }
 
