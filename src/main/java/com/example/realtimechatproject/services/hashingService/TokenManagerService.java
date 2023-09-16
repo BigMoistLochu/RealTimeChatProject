@@ -13,12 +13,17 @@ public class TokenManagerService {
     private HashingEmail hashingEmail;
 
 
-
-
-
     public String GenerateNewToken(String email) throws NoSuchAlgorithmException {
 
         return hashingEmail.HashTheEmail(email);
+    }
+
+    public boolean CheckToken(String password,String token) throws NoSuchAlgorithmException {
+        if(GenerateNewToken(password).equals(token))
+        {
+            return true;
+        }
+        return false;
     }
 
 

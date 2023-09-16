@@ -5,6 +5,7 @@ import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
 import com.example.realtimechatproject.validationsForm.FormValidator;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,6 @@ public class LoginPageController {
     private LoginPageService loginPageService;
 
     private RegisterPageService registerPageService;
-
-
-
 
 
 
@@ -51,8 +49,9 @@ public class LoginPageController {
 
 
     @PostMapping("/")
-    public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model)
+    public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model, HttpServletResponse response)
     {
+
         return loginPageService.checkLoginForm(form,model);
     }
 

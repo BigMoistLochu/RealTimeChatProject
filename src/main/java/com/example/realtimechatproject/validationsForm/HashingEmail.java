@@ -11,11 +11,14 @@ import java.security.NoSuchAlgorithmException;
 public class HashingEmail {
 
 
+    //hashowanie emaila
     public String HashTheEmail(String password) throws NoSuchAlgorithmException {
         BigInteger hashThePassword = new BigInteger(1,MessageDigest.getInstance("MD5").
                 digest(password.getBytes()));
         return hashThePassword.toString(16);
     }
+
+
 
 
 }
