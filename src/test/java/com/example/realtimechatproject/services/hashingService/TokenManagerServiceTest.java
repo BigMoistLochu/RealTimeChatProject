@@ -20,26 +20,23 @@ class TokenManagerServiceTest {
 
 
     @Test
-    void generateNewTokenMethodShouldReturnHashedToken() throws NoSuchAlgorithmException {
+    void generateNewTokenMethodShouldThrowsNoSuchAlgoritmException() throws NoSuchAlgorithmException {
 
-
-        String password = "password";
-        Assertions.assertThrows(NoSuchAlgorithmException.class,()->MessageDigest.getInstance("MS5").digest(password.getBytes()));
+        String password = "RandomPassword";
+        Assertions.assertThrows(NoSuchAlgorithmException.class,()->MessageDigest.getInstance("BadAlgo").digest(password.getBytes()));
     }
 
 
 
-    //public String HashTheEmail(String password) throws NoSuchAlgorithmException {
-    //        BigInteger hashThePassword = new BigInteger(1,MessageDigest.getInstance("MD5").
-    //                digest(password.getBytes()));
-    //        return hashThePassword.toString(16);
-    //    }
-
     @Test
-    void checkTokenShouldReturnTrue() throws NoSuchAlgorithmException {
-
+    void checkTokenWchichShouldReturnTrueIfHashedIsCorrect() throws NoSuchAlgorithmException {
+        //Given
+        HashingEmail hashingEmail = new HashingEmail();
         String expectToken = "2240559ea547577898a9c2f2801ab8bb";
-
+        String passwordToHash = "Fake Email";
+        //when
+        //then
+        assertEquals(expectToken,hashingEmail.HashTheEmail(passwordToHash));
     }
 
 }
