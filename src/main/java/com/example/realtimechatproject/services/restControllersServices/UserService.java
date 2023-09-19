@@ -48,4 +48,14 @@ public class UserService {
         return userRepository.existsByLogin(login);
     }
 
+    public Boolean isTokenExists(String token)
+    {
+        return userRepository.existsByToken(token);
+    }
+
+    public UserEntity getUserByToken(String token)
+    {
+        return userRepository.getFirstByToken(token);
+    }
+
 }

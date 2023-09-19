@@ -1,5 +1,6 @@
 package com.example.realtimechatproject.validationsForm;
 
+import com.example.realtimechatproject.models.IForm;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
@@ -8,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 @Component
-public class HashingEmail {
+public class HashingEmail{
 
 
     //hashowanie emaila
@@ -17,8 +18,5 @@ public class HashingEmail {
                 digest(password.getBytes()));
         return hashThePassword.toString(16);
     }
-
-
-
 
 }

@@ -1,6 +1,8 @@
 package com.example.realtimechatproject.services.controllersServices;
 
 import com.example.realtimechatproject.models.LoginForm;
+import com.example.realtimechatproject.models.UserEntity;
+import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validationsForm.FormValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ public class LoginPageService {
 
 
     private FormValidator formValidator;
+
+    private UserService userService;
 
 
 
@@ -25,6 +29,12 @@ public class LoginPageService {
             return "login.html";
         }
 
+        //check user exist with this email(token)
+        if(userService.isUserExists(form.getLogin()))
+        {
+            UserEntity user = userService.getUserByLogin(form.getLogin());
+            System.out.println(user.getToken());
+        }
 
 
         return "chat.html";

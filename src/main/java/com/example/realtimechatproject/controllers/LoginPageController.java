@@ -48,7 +48,7 @@ public class LoginPageController {
 
 
     @PostMapping("/")
-    public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model, HttpServletResponse response)
+    public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model)
     {
 
         return loginPageService.checkLoginForm(form,model);

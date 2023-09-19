@@ -19,4 +19,8 @@ public interface UserRepository extends CrudRepository<UserEntity,Long> {
 
     UserEntity getFirstBySurname(String surname);
     List<UserEntity> getAllBySurname(String surname);
+
+    Boolean existsByToken(String token);
+
+    UserEntity getFirstByToken(String token);
 }
