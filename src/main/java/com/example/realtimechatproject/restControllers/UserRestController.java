@@ -39,7 +39,7 @@ public class UserRestController {
     }
 
     @PostMapping("/user/add")
-    public ResponseEntity addUser(@RequestBody UserEntity user){
+    public ResponseEntity<UserEntity> addUser(@RequestBody UserEntity user){
         //Co chcesz zwrocic do klienta? jaki status?
         //Co w przypadku gdzie user juz istnieje?
         //co w przypadku gdy podasz zle wartosci?

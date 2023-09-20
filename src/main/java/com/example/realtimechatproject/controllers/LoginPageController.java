@@ -4,8 +4,6 @@ import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
-import com.example.realtimechatproject.validationsForm.FormValidator;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
