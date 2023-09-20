@@ -22,7 +22,7 @@ public class UserService {
     public void addUser(UserEntity user)
     {
 
-        if(user.getName().length()>20)
+        if(user.getName().length()>10)
         {
             throw new LengthException("Za dlugi Nejm");
         }
