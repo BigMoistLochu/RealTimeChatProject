@@ -1,10 +1,12 @@
 package com.example.realtimechatproject.services.restControllersServices;
 
+import com.example.realtimechatproject.exeptions.LengthException;
 import com.example.realtimechatproject.models.UserEntity;
 import com.example.realtimechatproject.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -19,6 +21,11 @@ public class UserService {
 
     public void addUser(UserEntity user)
     {
+
+        if(user.getName().length()>20)
+        {
+            throw new LengthException("Za dlugi Nejm");
+        }
         UserEntity userEntity = new UserEntity();
         userEntity.setName(user.getName());
         userEntity.setSurname(user.getSurname());
@@ -33,9 +40,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public UserEntity getUserById(Long id)
+    public Optional<UserEntity> getUserById(Long id)
     {
-       return userRepository.getFirstById(id);
+       return userRepository.findById(id);
     }
 
     public UserEntity getUserByLogin(String login)
