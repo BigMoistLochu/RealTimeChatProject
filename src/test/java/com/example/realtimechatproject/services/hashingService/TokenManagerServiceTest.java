@@ -1,16 +1,11 @@
 package com.example.realtimechatproject.services.hashingService;
 
-import com.example.realtimechatproject.validationsForm.HashingEmail;
+import com.example.realtimechatproject.validations.HashingEmail;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
-import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

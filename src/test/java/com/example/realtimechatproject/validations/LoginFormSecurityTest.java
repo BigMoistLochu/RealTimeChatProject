@@ -1,4 +1,4 @@
-package com.example.realtimechatproject.validationsForm;
+package com.example.realtimechatproject.validations;
 
 import com.example.realtimechatproject.models.LoginForm;
 import org.junit.jupiter.api.Test;

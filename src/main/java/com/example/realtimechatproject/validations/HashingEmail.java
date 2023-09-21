@@ -1,4 +1,4 @@
-package com.example.realtimechatproject.validationsForm;
+package com.example.realtimechatproject.validations;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
