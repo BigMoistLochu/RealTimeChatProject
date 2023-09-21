@@ -2,7 +2,7 @@ package com.example.realtimechatproject.services.controllersServices;
 
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
-import com.example.realtimechatproject.models.UserEntity;
+import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.hashingService.TokenManagerService;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validationsForm.FormValidator;
@@ -46,7 +46,7 @@ public class RegisterPageService {
         //wiemy ze formularz jest git,wiemy ze user nie istnieje wiec pozostaje nam zahashowac haslo
         String newToken = tokenManagerService.GenerateNewToken(form.getLogin());
 
-        userService.addUser(UserEntity.builder()
+        userService.addUser(User.builder()
                 .Login(form.getLogin())
                 .Haslo(form.getHaslo())
                 .Name(form.getName())

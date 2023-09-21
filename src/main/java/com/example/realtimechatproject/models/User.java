@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @Table(name="Users")
-public class UserEntity {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,12 +27,12 @@ public class UserEntity {
 
 
 
-    public UserEntity(String login, String haslo) {
+    public User(String login, String haslo) {
         this.login = login;
         this.haslo = haslo;
     }
 
-    public UserEntity(String login, String haslo,String name,String surname,String token) {
+    public User(String login, String haslo, String name, String surname, String token) {
         this.login = login;
         this.haslo = haslo;
         this.name = name;
@@ -40,7 +40,7 @@ public class UserEntity {
         this.token = token;
     }
 
-    public UserEntity() {}
+    public User() {}
 
     @Transient
     public static UserEntityDto builder()

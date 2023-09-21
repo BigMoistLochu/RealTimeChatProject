@@ -1,7 +1,7 @@
 package com.example.realtimechatproject.services.restControllersServices;
 
 import com.example.realtimechatproject.exeptions.LengthException;
-import com.example.realtimechatproject.models.UserEntity;
+import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,19 @@ public class UserService {
 
     UserRepository userRepository;
 
-    public List<UserEntity> getListOfUsers()
+    public List<User> getListOfUsers()
     {
-        return (List<UserEntity>) userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
-    public void addUser(UserEntity user)
+    public void addUser(User user)
     {
 
         if(user.getName().length()>10)
         {
             throw new LengthException("Za dlugi Nejm");
         }
-        UserEntity userEntity = new UserEntity();
+        User userEntity = new User();
         userEntity.setName(user.getName());
         userEntity.setSurname(user.getSurname());
         userEntity.setLogin(user.getLogin());
@@ -40,12 +40,12 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public Optional<UserEntity> getUserById(Long id)
+    public Optional<User> getUserById(Long id)
     {
        return userRepository.findById(id);
     }
 
-    public UserEntity getUserByLogin(String login)
+    public User getUserByLogin(String login)
     {
         return userRepository.getFirstByLogin(login);
     }
@@ -60,7 +60,7 @@ public class UserService {
         return userRepository.existsByToken(token);
     }
 
-    public UserEntity getUserByToken(String token)
+    public User getUserByToken(String token)
     {
         return userRepository.getFirstByToken(token);
     }

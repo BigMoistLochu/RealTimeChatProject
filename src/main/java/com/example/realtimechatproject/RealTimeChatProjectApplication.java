@@ -1,17 +1,9 @@
 package com.example.realtimechatproject;
-
-import com.example.realtimechatproject.models.ChatMessage;
-import com.example.realtimechatproject.models.IForm;
-import com.example.realtimechatproject.models.UserEntity;
-import com.example.realtimechatproject.repositories.UserRepository;
-import com.example.realtimechatproject.validationsForm.HashingEmail;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
-
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class RealTimeChatProjectApplication implements CommandLineRunner {
@@ -34,6 +26,7 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 //        HashingEmail hashingEmail = new HashingEmail();
 //        System.out.println(hashingEmail.HashTheEmail("Fake Email"));
 
+        List<String> list = new ArrayList<>(List.of("Jarek","Kasi","Pawel"));
 
         
 

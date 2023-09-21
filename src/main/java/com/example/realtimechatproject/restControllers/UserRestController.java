@@ -1,13 +1,12 @@
 package com.example.realtimechatproject.restControllers;
 
-import com.example.realtimechatproject.models.UserEntity;
+import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.net.ssl.SSLEngineResult;
 import java.util.List;
 
 @RestController
@@ -18,7 +17,7 @@ public class UserRestController {
 
 
     @GetMapping("/all/users")
-    public List<UserEntity> getAllUsers()
+    public List<User> getAllUsers()
     {
         return userService.getListOfUsers();
     }
@@ -32,14 +31,14 @@ public class UserRestController {
     }
 
     @GetMapping("/user/get/{id}")
-    public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long userId)
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long userId)
     {
 //        ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(userId));
         return ResponseEntity.of(userService.getUserById(userId));
     }
 
     @PostMapping("/user/add")
-    public ResponseEntity<UserEntity> addUser(@RequestBody UserEntity user){
+    public ResponseEntity<User> addUser(@RequestBody User user){
         //Co chcesz zwrocic do klienta? jaki status?
         //Co w przypadku gdzie user juz istnieje?
         //co w przypadku gdy podasz zle wartosci?

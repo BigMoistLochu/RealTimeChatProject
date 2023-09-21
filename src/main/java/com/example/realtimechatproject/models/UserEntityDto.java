@@ -29,7 +29,7 @@ public class UserEntityDto {
 
     public UserEntityDto Name(String name)
     {
-        this.name = login;
+        this.name = name;
         return this;
     }
 
@@ -45,9 +45,9 @@ public class UserEntityDto {
         return this;
     }
 
-    public UserEntity build()
+    public User build()
     {
-        return new UserEntity(login,haslo,name,surname,token);
+        return new User(login,haslo,name,surname,token);
     }
 
 
