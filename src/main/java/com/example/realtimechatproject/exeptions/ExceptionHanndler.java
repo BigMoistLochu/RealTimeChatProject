@@ -13,4 +13,10 @@ public class ExceptionHanndler {
     {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = {LengthException.class})
+    public ResponseEntity getWrongLogin(LengthException e)
+    {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

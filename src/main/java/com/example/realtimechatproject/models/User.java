@@ -3,6 +3,7 @@ package com.example.realtimechatproject.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @Getter
 @Setter

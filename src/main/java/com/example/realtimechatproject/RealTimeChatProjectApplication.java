@@ -2,8 +2,6 @@ package com.example.realtimechatproject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class RealTimeChatProjectApplication implements CommandLineRunner {
@@ -26,11 +24,9 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 //        HashingEmail hashingEmail = new HashingEmail();
 //        System.out.println(hashingEmail.HashTheEmail("Fake Email"));
 
-        List<String> list = new ArrayList<>(List.of("Jarek","Kasi","Pawel"));
-
-        
-
-
+            //dlaczego chcialbys wyciagac z bazy jakies bardziej zaawansowane pytania?
+            //po pierwsze rest api jest dla innych aplikacji lub dla frontendu
+            //zlozone zapytania ktore maja sluzyc do analizy powinny byc
     }
 
 
