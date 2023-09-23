@@ -1,5 +1,6 @@
 package com.example.realtimechatproject.restControllers;
 
+import com.example.realtimechatproject.exeptions.LengthException;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import lombok.AllArgsConstructor;
@@ -39,13 +40,15 @@ public class UserRestController {
 
     @PostMapping("/user/add")
     public ResponseEntity<User> addUser(@RequestBody User user){
-        //Co chcesz zwrocic do klienta? jaki status?
-        //Co w przypadku gdzie user juz istnieje?
-        //co w przypadku gdy podasz zle wartosci?
-        System.out.println(user.toString());
+
+        if(user.getName().length()>10 || user.getSurname().length()>10)
+        {
+            throw new LengthException("Za dluga nazwa");
+        }
+        //mozesz zwalidowac to co przyszlo i wywalac odpowiednie wyjatki jesli cos pojdzie nie tak
+        //mozesz zrobic to w tej klasie, a mozesz to podzieli
+
         userService.addUser(user);
-        //tylko ze on nie zostanie wyslany do klienta,zostanie rzucony wyjatke w aplikacji
-        //jesli bysmy chcieli zwrocic
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

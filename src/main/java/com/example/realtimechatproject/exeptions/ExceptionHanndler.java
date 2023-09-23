@@ -9,14 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionHanndler {
 
     @ExceptionHandler(value = {LengthException.class})
-    public ResponseEntity getExp(LengthException e)
+    public ResponseEntity getWrongLength(LengthException e)
     {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = {LengthException.class})
-    public ResponseEntity getWrongLogin(LengthException e)
-    {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
 }
