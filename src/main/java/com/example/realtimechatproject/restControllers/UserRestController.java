@@ -26,9 +26,10 @@ public class UserRestController {
     //    @RequestParam(value="id", required="false") Long id uzywamy gdy nie chcemy zeby obowiazkiem
     //    bylo podanie argumentu id, w tym przypadku domyslnie jest required na true
     @DeleteMapping("/user/delete/{id}")
-    public void deleteUserById(@PathVariable("id") Long userId)
+    public ResponseEntity<User> deleteUserById(@PathVariable("id") Long userId)
     {
         userService.deleteUserById(userId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
     @GetMapping("/user/get/{id}")
