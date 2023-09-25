@@ -1,5 +1,6 @@
 package com.example.realtimechatproject.restControllers;
 
+import com.example.realtimechatproject.exeptions.HashingException;
 import com.example.realtimechatproject.exeptions.LengthException;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
@@ -40,15 +41,7 @@ public class UserRestController {
     }
 
     @PostMapping("/user/add")
-    public ResponseEntity<User> addUser(@RequestBody User user){
-
-        if(user.getName().length()>10 || user.getSurname().length()>10)
-        {
-            throw new LengthException("Za dluga nazwa");
-        }
-        //mozesz zwalidowac to co przyszlo i wywalac odpowiednie wyjatki jesli cos pojdzie nie tak
-        //mozesz zrobic to w tej klasie, a mozesz to podzieli
-
+    public ResponseEntity<User> addUser(@RequestBody User user) throws HashingException {
         userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

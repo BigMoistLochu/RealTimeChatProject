@@ -1,18 +1,32 @@
 package com.example.realtimechatproject.validations;
-import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.example.realtimechatproject.exeptions.HashingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Component
+
+
+
 public class HashingEmail{
 
-    public String HashTheEmail(String password) throws NoSuchAlgorithmException {
-        BigInteger hashThePassword = new BigInteger(1,MessageDigest.getInstance("MD5").
-                digest(password.getBytes()));
-        return hashThePassword.toString(16);
+    private HashingEmail(){}
+
+
+
+    public static String GenereteNewToken(String password){
+        Logger logger = LoggerFactory.getLogger(HashingEmail.class);
+        try {
+           String hashThePassword = new BigInteger(1, MessageDigest.getInstance("MD5").
+                    digest(password.getBytes())).toString(16);
+            return hashThePassword;
+        } catch (Exception e) {
+            logger.info("Błąd podczas hashowania Emaila",e.getMessage());
+            throw new HashingException("Token Generating error");
+        }
     }
 
 }

@@ -14,4 +14,10 @@ public class ExceptionHanndler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value = {HashingException.class})
+    public ResponseEntity getWrongAlgorythm(HashingException e)
+    {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }

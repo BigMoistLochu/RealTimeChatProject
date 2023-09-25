@@ -26,12 +26,11 @@ class TokenManagerServiceTest {
     @Test
     void checkTokenWchichShouldReturnTrueIfHashedIsCorrect() throws NoSuchAlgorithmException {
         //Given
-        HashingEmail hashingEmail = new HashingEmail();
         String expectToken = "2240559ea547577898a9c2f2801ab8bb";
         String passwordToHash = "Fake Email";
         //when
         //then
-        assertEquals(expectToken,hashingEmail.HashTheEmail(passwordToHash));
+        assertEquals(expectToken,HashingEmail.GenereteNewToken(passwordToHash));
     }
 
 }

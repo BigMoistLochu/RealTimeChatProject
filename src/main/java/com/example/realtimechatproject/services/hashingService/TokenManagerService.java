@@ -11,13 +11,12 @@ import java.security.NoSuchAlgorithmException;
 @AllArgsConstructor
 public class TokenManagerService {
 
-    private HashingEmail hashingEmail;
 
     private UserService userService;
 
     //Hash The Email and return token
-    public String GenerateNewToken(String email) throws NoSuchAlgorithmException {
-        return hashingEmail.HashTheEmail(email);
+    public static String GenerateNewToken(String email) throws NoSuchAlgorithmException {
+        return HashingEmail.GenereteNewToken(email);
     }
 
     //Heck The generated token

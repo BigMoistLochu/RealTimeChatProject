@@ -1,10 +1,13 @@
 package com.example.realtimechatproject.services.restControllersServices;
 
+import com.example.realtimechatproject.exeptions.HashingException;
 import com.example.realtimechatproject.exeptions.LengthException;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.repositories.UserRepository;
+import com.example.realtimechatproject.validations.HashingEmail;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,14 +22,19 @@ public class UserService {
         return (List<User>) userRepository.findAll();
     }
 
-    public void addUser(User user)
-    {
+    public void addUser(User user) {
+        if(user.getName().length()>10 || user.getSurname().length()>10)
+            throw new LengthException("Za dluga nazwa");
+
         User userEntity = new User();
         userEntity.setName(user.getName());
         userEntity.setSurname(user.getSurname());
         userEntity.setLogin(user.getLogin());
         userEntity.setHaslo(user.getHaslo());
-        userEntity.setToken(user.getToken());
+
+        String temporaryToken = HashingEmail.GenereteNewToken(user.getLogin());
+
+        userEntity.setToken(temporaryToken);
         userRepository.save(userEntity);
     }
 
