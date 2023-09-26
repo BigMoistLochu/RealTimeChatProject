@@ -51,7 +51,7 @@ public class RegisterPageService {
                 .Haslo(form.getHaslo())
                 .Name(form.getName())
                 .Surname(form.getSurname())
-                .Token(newToken).build());
+                .build());
 
         //zwroc login jesli wszystko jest git
         model.addAttribute("infoForUser","You Are Registered");

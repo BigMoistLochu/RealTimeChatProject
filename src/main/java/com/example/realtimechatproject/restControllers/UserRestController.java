@@ -1,7 +1,5 @@
 package com.example.realtimechatproject.restControllers;
 
-import com.example.realtimechatproject.exeptions.HashingException;
-import com.example.realtimechatproject.exeptions.LengthException;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import lombok.AllArgsConstructor;
@@ -36,12 +34,11 @@ public class UserRestController {
     @GetMapping("/user/get/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long userId)
     {
-//        ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(userId));
         return ResponseEntity.of(userService.getUserById(userId));
     }
 
     @PostMapping("/user/add")
-    public ResponseEntity<User> addUser(@RequestBody User user) throws HashingException {
+    public ResponseEntity<User> addUser(@RequestBody User user){
         userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

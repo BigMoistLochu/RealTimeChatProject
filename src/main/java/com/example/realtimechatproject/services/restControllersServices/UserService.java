@@ -23,7 +23,8 @@ public class UserService {
     }
 
     public void addUser(User user) {
-        if(user.getName().length()>10 || user.getSurname().length()>10)
+
+        if(user.getName().length()>20 || user.getSurname().length()>20)
             throw new LengthException("Za dluga nazwa");
 
         User userEntity = new User();
