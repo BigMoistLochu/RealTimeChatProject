@@ -25,7 +25,7 @@ public class HashingEmail{
             return hashThePassword;
         } catch (Exception e) {
             logger.info("Błąd podczas hashowania Emaila",e.getMessage());
-            throw new HashingException("Token Generating error");
+            throw new HashingException("Token Generation error");
         }
     }
 

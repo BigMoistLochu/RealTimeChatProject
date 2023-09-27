@@ -33,7 +33,7 @@ public class LoginPageService {
         if(userService.isUserExists(form.getLogin()))
         {
             User user = userService.getUserByLogin(form.getLogin());
-            System.out.println(user.getToken());
+
         }
 
 
