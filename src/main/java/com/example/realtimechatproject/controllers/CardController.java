@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CardController {
 
-    @GetMapping("/cards")
+    @GetMapping("/test")
     public String getCardWeb()
     {
-        return "card.html";
+        return "newChat.html";
     }
 
 
