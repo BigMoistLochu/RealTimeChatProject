@@ -1,10 +1,12 @@
 package com.example.realtimechatproject.restControllers;
 
+import com.example.realtimechatproject.models.ChatMessage;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +44,6 @@ public class UserRestController {
         userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+
 }
