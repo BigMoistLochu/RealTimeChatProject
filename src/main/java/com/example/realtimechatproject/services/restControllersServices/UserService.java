@@ -1,14 +1,9 @@
 package com.example.realtimechatproject.services.restControllersServices;
-
-import com.example.realtimechatproject.exeptions.HashingException;
 import com.example.realtimechatproject.exeptions.LengthException;
-import com.example.realtimechatproject.models.ChatMessage;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.repositories.UserRepository;
 import com.example.realtimechatproject.validations.HashingEmail;
 import lombok.AllArgsConstructor;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

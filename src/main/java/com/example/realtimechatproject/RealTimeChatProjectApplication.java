@@ -1,14 +1,11 @@
 package com.example.realtimechatproject;
 import com.example.realtimechatproject.controllers.ChatMessageController;
-import com.example.realtimechatproject.models.ChatMessage;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Scanner;
 
 @SpringBootApplication
 public class RealTimeChatProjectApplication implements CommandLineRunner {
@@ -36,10 +33,6 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
         userRepository.save(user);
         System.out.println(userRepository.getFirstBySurnameAndName("Krok","Konrad"));
 
-
-        //dlaczego chcialbys wyciagac z bazy jakies bardziej zaawansowane pytania?
-            //po pierwsze rest api jest dla innych aplikacji lub dla frontendu
-            //zlozone zapytania ktore maja sluzyc do analizy powinny byc
     }
 
 
