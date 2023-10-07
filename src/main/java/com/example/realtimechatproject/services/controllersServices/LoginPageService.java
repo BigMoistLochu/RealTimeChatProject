@@ -4,6 +4,8 @@ import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validations.FormValidator;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -19,7 +21,7 @@ public class LoginPageService {
 
 
 
-    public String checkLoginForm(LoginForm form, Model model)
+    public String checkLoginForm(LoginForm form, Model model, HttpServletResponse respone)
     {
 
         if(!formValidator.validate(form))
@@ -30,13 +32,16 @@ public class LoginPageService {
         }
 
         //check user exist with this email(token)
-        if(userService.isUserExists(form.getLogin()))
+        if(!userService.isUserExists(form.getLogin()))
         {
-            User user = userService.getUserByLogin(form.getLogin());
-
+            model.addAttribute("infoForUser","This User dosnt exists");
+            model.addAttribute("LoginForm", new LoginForm());
+            return "login.html";
         }
+        User user = userService.getUserByLogin(form.getLogin());
 
-
+        Cookie cookie = new Cookie("_IDSession",user.getToken());
+        respone.addCookie(cookie);
         return "chat.html";
     }
 
