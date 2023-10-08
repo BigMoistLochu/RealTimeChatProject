@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 public class TokenManagerService {
 
 
-
-
     //Hash The Email and return token
     public static String GenerateNewToken(String email){
         return HashingEmail.GenereteNewToken(email);
     }
+
+
 
     //Heck The generated token
     public boolean CheckToken(String password,String token){

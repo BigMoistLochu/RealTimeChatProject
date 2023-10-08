@@ -21,7 +21,7 @@ public class RegisterPageService {
 
     private UserService userService;
 
-    private TokenManagerService tokenManagerService;
+
 
 
 
@@ -44,7 +44,7 @@ public class RegisterPageService {
         }
 
         //wiemy ze formularz jest git,wiemy ze user nie istnieje wiec pozostaje nam zahashowac haslo
-        String newToken = tokenManagerService.GenerateNewToken(form.getLogin());
+
 
         userService.addUser(User.builder()
                 .Login(form.getLogin())

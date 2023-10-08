@@ -2,6 +2,7 @@ package com.example.realtimechatproject.services.restControllersServices;
 import com.example.realtimechatproject.exeptions.LengthException;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.repositories.UserRepository;
+import com.example.realtimechatproject.services.hashingService.TokenManagerService;
 import com.example.realtimechatproject.validations.HashingEmail;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,7 @@ public class UserService {
         userEntity.setSurname(user.getSurname());
         userEntity.setLogin(user.getLogin());
         userEntity.setHaslo(user.getHaslo());
-
-        String temporaryToken = HashingEmail.GenereteNewToken(user.getLogin());
-
+        String temporaryToken = TokenManagerService.GenerateNewToken(user.getLogin());
         userEntity.setToken(temporaryToken);
         userRepository.save(userEntity);
     }
