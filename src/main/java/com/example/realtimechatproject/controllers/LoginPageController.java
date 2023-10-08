@@ -50,10 +50,11 @@ public class LoginPageController {
 
 
     @PostMapping("/")
-    public String GetValidLoginFormPage(@ModelAttribute LoginForm form, Model model, HttpServletResponse response)
+    public String GetValidLoginFormPage(@ModelAttribute LoginForm form,Model model,HttpServletResponse response)
     {
+        response.setContentType(loginPageService.setViewAfterLoginForm(form,model));
 
-        return loginPageService.checkLoginForm(form,model,response);
+        return response.getContentType();
     }
 
     @PostMapping("/register")

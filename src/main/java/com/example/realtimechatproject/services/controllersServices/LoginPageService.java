@@ -19,9 +19,7 @@ public class LoginPageService {
 
     private UserService userService;
 
-
-
-    public String checkLoginForm(LoginForm form, Model model, HttpServletResponse respone)
+    public String setViewAfterLoginForm(LoginForm form, Model model)
     {
 
         if(!formValidator.validate(form))
@@ -31,18 +29,15 @@ public class LoginPageService {
             return "login.html";
         }
 
-        //check user exist with this email(token)
+
         if(!userService.isUserExists(form.getLogin()))
         {
             model.addAttribute("infoForUser","This User dosnt exists");
             model.addAttribute("LoginForm", new LoginForm());
             return "login.html";
         }
-        User user = userService.getUserByLogin(form.getLogin());
 
-        Cookie cookie = new Cookie("_IDSession",user.getToken());
-        respone.addCookie(cookie);
-        return "chat.html";
+        return"chat.html";
     }
 
 
