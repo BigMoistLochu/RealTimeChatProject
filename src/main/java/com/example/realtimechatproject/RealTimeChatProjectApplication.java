@@ -12,8 +12,6 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 
     UserRepository userRepository;
 
-    @Autowired
-    ChatMessageController chatMessageController;
 
     public RealTimeChatProjectApplication(UserRepository userRepository)
     {
@@ -28,6 +26,7 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
 
         User user1 = new User("474z911","mati12355","Pawel","Szymeczko","43nb43");
         User user = new User("4740911","mati12345","Konrad","Krok","43nb33");
+
 
         userRepository.save(user1);
         userRepository.save(user);

@@ -1,5 +1,6 @@
 package com.example.realtimechatproject.controllers;
 
+import com.example.realtimechatproject.NewFiczer.CookieService;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
@@ -25,6 +26,8 @@ public class LoginPageController {
     private LoginPageService loginPageService;
 
     private RegisterPageService registerPageService;
+
+    private CookieService cookieService;
 
 
 
@@ -53,7 +56,7 @@ public class LoginPageController {
     public String GetValidLoginFormPage(@ModelAttribute LoginForm form,Model model,HttpServletResponse response)
     {
         response.setContentType(loginPageService.setViewAfterLoginForm(form,model));
-
+        response.addCookie(cookieService.getCookieAuth(form.getLogin()));
         return response.getContentType();
     }
 
