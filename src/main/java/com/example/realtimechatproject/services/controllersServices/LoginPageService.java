@@ -1,10 +1,8 @@
 package com.example.realtimechatproject.services.controllersServices;
 
 import com.example.realtimechatproject.models.LoginForm;
-import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validations.FormValidator;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,7 @@ public class LoginPageService {
 
         if(!formValidator.validate(form))
         {
-            model.addAttribute("infoForUser","Wrong Email or Password");
+            model.addAttribute("infoForUser","Login or Password is valid");
             model.addAttribute("LoginForm", new LoginForm());
             return "login.html";
         }

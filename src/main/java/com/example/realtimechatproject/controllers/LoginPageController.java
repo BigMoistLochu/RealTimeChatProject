@@ -55,8 +55,8 @@ public class LoginPageController {
     @PostMapping("/")
     public String GetValidLoginFormPage(@ModelAttribute LoginForm form,Model model,HttpServletResponse response)
     {
-        response.setContentType(loginPageService.setViewAfterLoginForm(form,model));
-        response.addCookie(cookieService.getCookieAuth(form.getLogin()));
+        response.setContentType(loginPageService.setViewAfterLoginForm(form,model));//ustawianie widoku
+        response.addCookie(cookieService.getCookieAuth(form.getLogin()));//ustawianie ciastka z idSession
         return response.getContentType();
     }
 
