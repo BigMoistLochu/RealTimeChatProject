@@ -1,11 +1,10 @@
-package com.example.realtimechatproject.controllers;
+package com.example.realtimechatproject.mvc;
 
 import com.example.realtimechatproject.NewFiczer.CookieService;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,9 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.security.NoSuchAlgorithmException;
 
 @Controller

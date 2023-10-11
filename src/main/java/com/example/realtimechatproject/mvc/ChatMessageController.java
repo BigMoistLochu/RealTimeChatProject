@@ -1,4 +1,4 @@
-package com.example.realtimechatproject.controllers;
+package com.example.realtimechatproject.mvc;
 import com.example.realtimechatproject.models.ChatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
