@@ -1,7 +1,7 @@
 package com.example.realtimechatproject.mvc;
 
-import com.example.realtimechatproject.NewFiczer.CookieService;
 import com.example.realtimechatproject.NewFiczer.HttpResponseFilter;
+import com.example.realtimechatproject.NewFiczer.HttpResponseService;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
@@ -24,7 +24,6 @@ public class LoginPageController {
 
     private RegisterPageService registerPageService;
 
-    private CookieService cookieService;
 
 
 
@@ -52,12 +51,14 @@ public class LoginPageController {
     @PostMapping("/")
     public String GetValidLoginFormPage(@ModelAttribute LoginForm form,Model model,HttpServletResponse response)
     {
-
-//        response.setContentType(loginPageService.setViewAfterLoginForm(form,model));//ustawianie widoku
-//        response.addCookie(cookieService.getCookieAuth(form.getLogin()));//ustawianie ciastka z idSession
-          return HttpResponseFilter.buildResponse()
-                  .setHttpResponse(response).setLoginForm(form).setModel(model).build().getContentType();
-//          return response.getContentType();
+       HttpResponseFilter Prepare = HttpResponseFilter.CreateRespone()
+               .setModel(model)
+               .setLoginForm(form)
+               .setHttpServletResponse(response)
+               .build();
+        var xd = new HttpResponseService(Prepare);
+        xd.CordinatorOfEverything();
+       return xd.getHttpResponseFilter().getHttpServletResponse().getContentType();
     }
 
     @PostMapping("/register")

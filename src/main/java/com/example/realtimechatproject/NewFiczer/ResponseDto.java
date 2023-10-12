@@ -1,9 +1,6 @@
 package com.example.realtimechatproject.NewFiczer;
 
 import com.example.realtimechatproject.models.LoginForm;
-import com.example.realtimechatproject.models.RegisterForm;
-import com.example.realtimechatproject.models.User;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 
@@ -15,22 +12,25 @@ public class ResponseDto {
     private LoginForm loginForm;
 
 
+
+    public ResponseDto setConfigurationResponse()
+    {
+
+        return this;
+    }
+    public HttpServletResponse build()
+    {
+        return httpServletResponse;
+    }
     public ResponseDto setHttpResponse(HttpServletResponse httpServletResponse)
     {
         this.httpServletResponse = httpServletResponse;
-        Cookie cookie = new Cookie("xd","frajer");
-        httpServletResponse.addCookie(cookie);
-        String login = "login.html";
-        httpServletResponse.setContentType(login);
         return this;
     }
 
     public ResponseDto setModel(Model model)
     {
         this.model = model;
-        //zamiast tutaj to ustawiac to ustawimy to:
-        model.addAttribute("infoForUser","Login or Password is valid");
-        model.addAttribute("LoginForm", new LoginForm());
         return this;
     }
 
@@ -40,10 +40,32 @@ public class ResponseDto {
         return this;
     }
 
-    public HttpServletResponse build()
-    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public HttpServletResponse getHttpServletResponse() {
         return httpServletResponse;
     }
 
+    public Model getModel() {
+        return model;
+    }
 
+    public LoginForm getLoginForm() {
+        return loginForm;
+    }
 }

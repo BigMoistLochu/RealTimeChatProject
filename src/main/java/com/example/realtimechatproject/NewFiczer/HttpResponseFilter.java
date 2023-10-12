@@ -1,45 +1,37 @@
 package com.example.realtimechatproject.NewFiczer;
 
+
 import com.example.realtimechatproject.models.LoginForm;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 
 public class HttpResponseFilter {
 
     private HttpServletResponse httpServletResponse;
+
     private Model model;
     private LoginForm loginForm;
 
-    public HttpServletResponse build()
-    {
-        return httpServletResponse;
-    }
+    private HttpResponseFilter(){}
 
-    public static HttpResponseFilter buildResponse()
+    public static HttpResponseFilter CreateRespone()
     {
         return new HttpResponseFilter();
     }
 
-
-
-
-    public HttpResponseFilter setHttpResponse(HttpServletResponse httpServletResponse)
+    public HttpResponseFilter build()
+    {
+        return this;
+    }
+    public HttpResponseFilter setHttpServletResponse(HttpServletResponse httpServletResponse)
     {
         this.httpServletResponse = httpServletResponse;
-        Cookie cookie = new Cookie("xd","frajer");
-        httpServletResponse.addCookie(cookie);
-        String login = "login.html";
-        httpServletResponse.setContentType(login);
         return this;
     }
 
     public HttpResponseFilter setModel(Model model)
     {
         this.model = model;
-        //zamiast tutaj to ustawiac to ustawimy to:
-        model.addAttribute("infoForUser","Login or Password is valid");
-        model.addAttribute("LoginForm", new LoginForm());
         return this;
     }
 
@@ -49,14 +41,15 @@ public class HttpResponseFilter {
         return this;
     }
 
+    public HttpServletResponse getHttpServletResponse() {
+        return httpServletResponse;
+    }
 
+    public Model getModel() {
+        return model;
+    }
 
-//    public static ResponseDto buildResponse()
-//    {
-//        return new ResponseDto();
-//    }
-
-
-
-
+    public LoginForm getLoginForm() {
+        return loginForm;
+    }
 }
