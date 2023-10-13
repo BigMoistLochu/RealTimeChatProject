@@ -3,7 +3,9 @@ package com.example.realtimechatproject.NewFiczer;
 
 import com.example.realtimechatproject.models.LoginForm;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
+
 
 public class HttpResponseFilter {
 

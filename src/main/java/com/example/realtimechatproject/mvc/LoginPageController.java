@@ -8,6 +8,7 @@ import com.example.realtimechatproject.services.controllersServices.LoginPageSer
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,8 @@ public class LoginPageController {
     private LoginPageService loginPageService;
 
     private RegisterPageService registerPageService;
+
+    private HttpResponseService httpResponseService;
 
 
 
@@ -51,14 +54,12 @@ public class LoginPageController {
     @PostMapping("/")
     public String GetValidLoginFormPage(@ModelAttribute LoginForm form,Model model,HttpServletResponse response)
     {
-       HttpResponseFilter Prepare = HttpResponseFilter.CreateRespone()
+       HttpResponseFilter responeFilter = HttpResponseFilter.CreateRespone()
                .setModel(model)
                .setLoginForm(form)
                .setHttpServletResponse(response)
                .build();
-        var xd = new HttpResponseService(Prepare);
-        xd.CordinatorOfEverything();
-       return xd.getHttpResponseFilter().getHttpServletResponse().getContentType();
+       return httpResponseService.CordinatorOfEverything(responeFilter).getHttpServletResponse().getContentType();
     }
 
     @PostMapping("/register")
