@@ -25,14 +25,20 @@ public class HttpResponseService {
         this.cookieService = cookieService;
     }
 
-    public HttpResponseFilter CordinatorOfEverything(HttpResponseFilter response)
+    public HttpResponseFilter CordinatorOfEverything()
     {
-        this.response = response;
+
         //SprawdzanieFormularza i nadawanie modelu
         response.getHttpServletResponse().setContentType(ValidateAForm());
         //nadawanie ciasta przy logowaniu:
         response.getHttpServletResponse().addCookie(getACookie());
         return response;
+    }
+
+    public HttpResponseService setTheHttpResponseFilter(HttpResponseFilter response)
+    {
+        this.response = response;
+        return this;
     }
 
     private String ValidateAForm()

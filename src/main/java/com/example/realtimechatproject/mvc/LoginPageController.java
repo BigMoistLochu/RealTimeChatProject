@@ -59,7 +59,9 @@ public class LoginPageController {
                .setLoginForm(form)
                .setHttpServletResponse(response)
                .build();
-       return httpResponseService.CordinatorOfEverything(responeFilter).getHttpServletResponse().getContentType();
+       return httpResponseService.setTheHttpResponseFilter(responeFilter)
+               .CordinatorOfEverything()
+               .getHttpServletResponse().getContentType();
     }
 
     @PostMapping("/register")
