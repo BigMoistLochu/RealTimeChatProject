@@ -16,7 +16,9 @@ public class CookieService {
     {
         if(userService.isUserExists(login))
         {
-           return new Cookie("ID_SESSION",HashingEmail.GenereteNewToken(login));
+            Cookie cookie  =new Cookie("ID_SESSION",HashingEmail.GenereteNewToken(login));
+            cookie.setMaxAge(2000);
+            return cookie;
         }
 
         return new Cookie("ID_SESSION","notLogged");
