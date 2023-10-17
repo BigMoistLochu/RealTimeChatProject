@@ -34,14 +34,30 @@ public class CookieService {
 
     public boolean checkCookie(HttpServletRequest request)
     {
+
         Map<String,String> mapOfCookie = new HashMap<>();
+
         Arrays.stream(request.getCookies())
-                .map(cookie -> mapOfCookie.put(cookie.getName(),cookie.getValue()));
+                .map(cookie ->
+                        mapOfCookie.put(cookie.getName(),cookie.getValue())
+                );
+
         if(mapOfCookie.get("ID_SESSION").equals("notLogged"))
             return false;
+        else
+        {
+            if(userService.isTokenExists(mapOfCookie.get("ID_SESSION")))
+            {
+                return true;
+            }
+        }
 
-        return true;
+
+        return false;
     }
+
+    //za kazdym razem sprawdzane jesy ciastko czy uzytkownik jesy zalogowany
+    //user uderza na endpoint
 
 
 
