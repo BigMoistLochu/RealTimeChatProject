@@ -8,10 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -51,9 +48,17 @@ public class CookieService {
                 return true;
             }
         }
-
-
         return false;
+    }
+
+    public Cookie injectCookieToUser(String token)
+    {
+        if(userService.isTokenExists(token))
+        {
+            String userToken = userService.getUserByToken(token).getToken();
+            return new Cookie("ID_SESSION",userToken);
+        }
+        return new Cookie("ID_SESSION","notLogged");
     }
 
     //za kazdym razem sprawdzane jesy ciastko czy uzytkownik jesy zalogowany
