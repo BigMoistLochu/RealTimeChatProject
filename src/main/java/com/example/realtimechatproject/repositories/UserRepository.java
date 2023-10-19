@@ -25,4 +25,7 @@ public interface UserRepository extends CrudRepository<User,Long> {
     User getFirstByToken(String token);
 
     User getFirstBySurnameAndName(String surname,String name);
+
+    User getFirstByLoginAndHaslo(String login,String haslo);
+    boolean existsByLoginAndHaslo(String login,String haslo);
 }

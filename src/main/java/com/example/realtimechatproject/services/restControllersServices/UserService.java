@@ -66,7 +66,15 @@ public class UserService {
         return userRepository.getFirstByToken(token);
     }
 
+    public User getUserByLoginAndHaslo(String login,String haslo)
+    {
+        return userRepository.getFirstByLoginAndHaslo(login,haslo);
+    }
 
+    public boolean isUserWithLoginAndHasloExists(String login,String haslo)
+    {
+        return userRepository.existsByLoginAndHaslo(login,haslo);
+    }
 
 
 }
