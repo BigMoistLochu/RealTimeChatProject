@@ -28,7 +28,7 @@ public class LoginPageService {
         }
 
 
-        if(!userService.isUserExists(form.getLogin()))
+        if(!userService.isUserWithLoginAndHasloExists(form.getLogin(),form.getHaslo()))
         {
             model.addAttribute("infoForUser","This User dosnt exists");
             model.addAttribute("LoginForm", new LoginForm());

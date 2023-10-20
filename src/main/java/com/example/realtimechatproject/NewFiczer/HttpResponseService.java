@@ -51,7 +51,7 @@ public class HttpResponseService {
         }
 
 
-        if(!userService.isUserExists(response.getLoginForm().getLogin()))
+        if(!userService.isUserWithLoginAndHasloExists(response.getLoginForm().getLogin(),response.getLoginForm().getHaslo()))
         {
             response.getModel().addAttribute("infoForUser","This User dosnt exists");
             response.getModel().addAttribute("LoginForm", new LoginForm());
