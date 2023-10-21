@@ -32,6 +32,7 @@ public class HttpResponseService {
         response.getHttpServletResponse().setContentType(ValidateAForm());
         //nadawanie ciasta przy logowaniu:
         response.getHttpServletResponse().addCookie(getACookie());
+
         return response;
     }
 

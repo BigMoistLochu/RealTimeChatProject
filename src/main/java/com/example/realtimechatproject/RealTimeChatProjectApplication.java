@@ -1,4 +1,5 @@
 package com.example.realtimechatproject;
+import com.example.realtimechatproject.exeptions.CookieException;
 import com.example.realtimechatproject.models.User;
 import com.example.realtimechatproject.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -29,6 +30,20 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
         userRepository.save(user1);
         userRepository.save(user);
         System.out.println(userRepository.getFirstBySurnameAndName("Krok","Konrad"));
+        String cookie = "cokies";
+        try
+        {
+            if(cookie.equals("cokiesd"))
+            {
+                System.out.println(cookie);
+            }
+            else
+                throw new CookieException("Bad Ciastko In The Futhure");
+
+        }catch (RuntimeException e)
+        {
+            System.out.println(e.getMessage());
+        }
 
     }
 
