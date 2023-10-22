@@ -1,45 +1,45 @@
 package com.example.realtimechatproject.NewFiczer;
 
 
+import com.example.realtimechatproject.models.IForm;
 import com.example.realtimechatproject.models.LoginForm;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 
-public class HttpResponseFilter {
+public class HttpResponseCreator {
 
     private HttpServletResponse httpServletResponse;
 
     private Model model;
-    private LoginForm loginForm;
+    private IForm form;
 
-    private HttpResponseFilter(){}
+    private HttpResponseCreator(){}
 
-    public static HttpResponseFilter CreateRespone()
+    public static HttpResponseCreator CreateRespone()
     {
-        return new HttpResponseFilter();
+        return new HttpResponseCreator();
     }
 
-    public HttpResponseFilter build()
+    public HttpResponseCreator build()
     {
         return this;
     }
-    public HttpResponseFilter setHttpServletResponse(HttpServletResponse httpServletResponse)
+    public HttpResponseCreator setHttpServletResponse(HttpServletResponse httpServletResponse)
     {
         this.httpServletResponse = httpServletResponse;
         return this;
     }
 
-    public HttpResponseFilter setModel(Model model)
+    public HttpResponseCreator setModel(Model model)
     {
         this.model = model;
         return this;
     }
 
-    public HttpResponseFilter setLoginForm(LoginForm loginForm)
+    public HttpResponseCreator setForm(LoginForm loginForm)
     {
-        this.loginForm = loginForm;
+        this.form = loginForm;
         return this;
     }
 
@@ -51,7 +51,7 @@ public class HttpResponseFilter {
         return model;
     }
 
-    public LoginForm getLoginForm() {
-        return loginForm;
+    public IForm getForm() {
+        return form;
     }
 }

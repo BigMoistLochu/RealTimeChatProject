@@ -1,6 +1,6 @@
 package com.example.realtimechatproject.mvc;
 
-import com.example.realtimechatproject.NewFiczer.HttpResponseFilter;
+import com.example.realtimechatproject.NewFiczer.HttpResponseCreator;
 import com.example.realtimechatproject.NewFiczer.HttpResponseService;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
@@ -8,7 +8,6 @@ import com.example.realtimechatproject.services.controllersServices.LoginPageSer
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +46,8 @@ public class LoginPageController {
     @GetMapping("/talk")
     public String GetChatPage()
     {
+        //wysylajac requesta sprawdzasz czy uzytkownik ma ciastko jesli nie to
+
         return "chat.html";
     }
 
@@ -54,9 +55,9 @@ public class LoginPageController {
     @PostMapping("/")
     public String GetValidLoginFormPage(@ModelAttribute LoginForm form,Model model,HttpServletResponse response)
     {
-       HttpResponseFilter responeFilter = HttpResponseFilter.CreateRespone()
+       HttpResponseCreator responeFilter = HttpResponseCreator.CreateRespone()
                .setModel(model)
-               .setLoginForm(form)
+               .setForm(form)
                .setHttpServletResponse(response)
                .build();
        return httpResponseService.setTheHttpResponseFilter(responeFilter)

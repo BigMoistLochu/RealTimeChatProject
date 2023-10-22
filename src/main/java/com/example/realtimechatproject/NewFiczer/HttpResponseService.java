@@ -4,7 +4,6 @@ import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validations.FormValidator;
 import jakarta.servlet.http.Cookie;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class HttpResponseService {
 
     private CookieService cookieService;
 
-    private HttpResponseFilter response;
+    private HttpResponseCreator response;
 
     @Autowired
     public HttpResponseService(UserService userService, FormValidator formValidator,CookieService cookieService) {
@@ -25,7 +24,7 @@ public class HttpResponseService {
         this.cookieService = cookieService;
     }
 
-    public HttpResponseFilter CordinatorOfEverything()
+    public HttpResponseCreator CordinatorOfEverything()
     {
 
         //SprawdzanieFormularza i nadawanie modelu
@@ -36,7 +35,7 @@ public class HttpResponseService {
         return response;
     }
 
-    public HttpResponseService setTheHttpResponseFilter(HttpResponseFilter response)
+    public HttpResponseService setTheHttpResponseFilter(HttpResponseCreator response)
     {
         this.response = response;
         return this;
@@ -44,7 +43,7 @@ public class HttpResponseService {
 
     private String ValidateAForm()
     {
-        if(!formValidator.validate(response.getLoginForm()))
+        if(!formValidator.validate(response.getForm()))
         {
             response.getModel().addAttribute("infoForUser","Login or Password is valid");
             response.getModel().addAttribute("LoginForm", new LoginForm());
@@ -52,7 +51,7 @@ public class HttpResponseService {
         }
 
 
-        if(!userService.isUserWithLoginAndHasloExists(response.getLoginForm().getLogin(),response.getLoginForm().getHaslo()))
+        if(!userService.isUserWithLoginAndHasloExists(response.getForm().getLogin(),response.getForm().getHaslo()))
         {
             response.getModel().addAttribute("infoForUser","This User dosnt exists");
             response.getModel().addAttribute("LoginForm", new LoginForm());
@@ -64,7 +63,7 @@ public class HttpResponseService {
 
     private Cookie getACookie()
     {
-        return cookieService.getCookie(response.getLoginForm().getLogin());
+        return cookieService.getCookie(response.getForm().getLogin());
     }
 
 
