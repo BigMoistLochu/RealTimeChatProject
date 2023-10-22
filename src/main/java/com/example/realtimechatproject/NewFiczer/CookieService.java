@@ -56,7 +56,9 @@ public class CookieService {
         if(userService.isTokenExists(token))
         {
             String userToken = userService.getUserByToken(token).getToken();
-            return new Cookie("ID_SESSION",userToken);
+            Cookie cookie = new Cookie("ID_SESSION",userToken);
+            cookie.setMaxAge(120);
+            return cookie;
         }
         return new Cookie("ID_SESSION","notLogged");
     }
