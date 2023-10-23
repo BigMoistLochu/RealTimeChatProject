@@ -24,12 +24,13 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         User user1 = new User("474z911","mati12355","Pawel","Szymeczko","43nb43");
-        User user = new User("4740911","mati12345","Konrad","Krok","43nb33");
+        User user = new User("4740911@wp.pl","mati12345","Konrad","Krok","43nb33");
 
 
         userRepository.save(user1);
         userRepository.save(user);
         System.out.println(userRepository.getFirstBySurnameAndName("Krok","Konrad"));
+        System.out.println(userRepository.existsByLogin("4740911@wp.pl"));
         String cookie = "cokies";
         try
         {

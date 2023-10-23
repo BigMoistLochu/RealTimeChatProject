@@ -63,7 +63,10 @@ public class HttpResponseService {
 
     private Cookie getACookie()
     {
-        return cookieService.getCookie(response.getForm().getLogin());
+        return cookieService
+                .injectCookieToUser(response
+                        .getForm()
+                        .getLogin());
     }
 
 

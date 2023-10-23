@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 @Service
 @AllArgsConstructor
@@ -16,21 +17,12 @@ public class CookieService {
 
     UserService userService;
 
-    public Cookie getCookie(String login)
-    {
-        if(userService.isUserExists(login))
-        {
-            Cookie cookie  =new Cookie("ID_SESSION",HashingEmail.GenereteNewToken(login));
-            cookie.setMaxAge(2000);
-            return cookie;
-        }
 
-        return new Cookie("ID_SESSION","notLogged");
-    }
 
 
     public boolean checkCookie(HttpServletRequest request)
     {
+        System.out.println(request.getCookies()[0]);
 
         Map<String,String> mapOfCookie = new HashMap<>();
 
@@ -51,17 +43,23 @@ public class CookieService {
         return false;
     }
 
-    public Cookie injectCookieToUser(String token)
+    public Cookie injectCookieToUser(String login)
     {
-        if(userService.isTokenExists(token))
+        System.out.println("jestem w CookieToUser");
+        System.out.println(userService.isUserExists(login));
+        System.out.println(login);
+        if(userService.isUserExists(login))
         {
-            String userToken = userService.getUserByToken(token).getToken();
-            Cookie cookie = new Cookie("ID_SESSION",userToken);
+            String userToken = userService.getUserByLogin(login).getToken();
+            Cookie cookie = new Cookie("ID_SESSION", userToken);
             cookie.setMaxAge(120);
+            System.out.println("ciastko wcisniete do uzytkownika po zalogowaniu "+cookie.getValue());
             return cookie;
         }
         return new Cookie("ID_SESSION","notLogged");
     }
+
+
 
     //za kazdym razem sprawdzane jesy ciastko czy uzytkownik jesy zalogowany
     //user uderza na endpoint

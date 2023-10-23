@@ -13,14 +13,14 @@ public interface UserRepository extends CrudRepository<User,Long> {
     User getFirstByLogin(String login);
     List<User> getAllByHaslo(String haslo);
 
-    Boolean existsByLogin(String login);
+    boolean existsByLogin(String login);
 
     User getFirstById(Long id);
 
     User getFirstBySurname(String surname);
     List<User> getAllBySurname(String surname);
 
-    Boolean existsByToken(String token);
+    boolean existsByToken(String token);
 
     User getFirstByToken(String token);
 

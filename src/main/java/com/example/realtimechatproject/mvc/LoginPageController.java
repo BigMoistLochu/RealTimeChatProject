@@ -1,11 +1,14 @@
 package com.example.realtimechatproject.mvc;
 
+import com.example.realtimechatproject.NewFiczer.CookieService;
 import com.example.realtimechatproject.NewFiczer.HttpResponseCreator;
 import com.example.realtimechatproject.NewFiczer.HttpResponseService;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
 import com.example.realtimechatproject.services.controllersServices.RegisterPageService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,8 @@ public class LoginPageController {
 
     private HttpResponseService httpResponseService;
 
+    private CookieService cookieService;
+
 
 
 
@@ -44,10 +49,21 @@ public class LoginPageController {
     }
 
     @GetMapping("/talk")
-    public String GetChatPage()
+    public String GetChatPage(HttpServletRequest request)
     {
-        //wysylajac requesta sprawdzasz czy uzytkownik ma ciastko jesli nie to
-
+//        Cookie[] list = request.getCookies();
+//        System.out.println(list);
+//        @ModelAttribute LoginForm form,Model model,
+//        List<Cookie> list = Arrays.stream(request.getCookies()).toList();
+//        System.out.println(list);
+//        //wysylajac requesta sprawdzasz czy uzytkownik ma ciastko jesli nie to
+//        if(cookieService.checkCookie(request))
+//        {
+//            return "chat.html";
+//        }
+//
+//        model.addAttribute("infoForUser","Your Token Was Expired,try login again");
+//        model.addAttribute("LoginForm", new LoginForm());
         return "chat.html";
     }
 

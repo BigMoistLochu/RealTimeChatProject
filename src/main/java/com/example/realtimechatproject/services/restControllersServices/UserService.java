@@ -51,12 +51,12 @@ public class UserService {
         return userRepository.getFirstByLogin(login);
     }
 
-    public Boolean isUserExists(String login)
+    public boolean isUserExists(String login)
     {
         return userRepository.existsByLogin(login);
     }
 
-    public Boolean isTokenExists(String token)
+    public boolean isTokenExists(String token)
     {
         return userRepository.existsByToken(token);
     }
