@@ -26,10 +26,7 @@ public class CookieService {
 
         Map<String,String> mapOfCookie = new HashMap<>();
 
-        Arrays.stream(request.getCookies())
-                .map(cookie ->
-                        mapOfCookie.put(cookie.getName(),cookie.getValue())
-                );
+        Arrays.stream(request.getCookies()).forEach(cookie -> mapOfCookie.put(cookie.getName(),cookie.getValue()));
 
         if(mapOfCookie.get("ID_SESSION").equals("notLogged"))
             return false;

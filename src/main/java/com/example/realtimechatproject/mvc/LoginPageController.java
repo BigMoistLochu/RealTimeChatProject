@@ -3,6 +3,7 @@ package com.example.realtimechatproject.mvc;
 import com.example.realtimechatproject.NewFiczer.CookieService;
 import com.example.realtimechatproject.NewFiczer.HttpResponseCreator;
 import com.example.realtimechatproject.NewFiczer.HttpResponseService;
+import com.example.realtimechatproject.NewFiczer.Tescik;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;
@@ -17,6 +18,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @AllArgsConstructor
@@ -35,8 +40,9 @@ public class LoginPageController {
 
 
     @GetMapping("/")
-    public String GetMainPage(Model model)
+    public String GetMainPage(Model model,HttpServletResponse response)
     {
+        response.addCookie(new Cookie("Jan","Pawel"));
         model.addAttribute("LoginForm", new LoginForm());
         return "login.html";
     }
@@ -49,22 +55,25 @@ public class LoginPageController {
     }
 
     @GetMapping("/talk")
-    public String GetChatPage(HttpServletRequest request)
+    public String GetChatPage(@ModelAttribute LoginForm form,Model model,HttpServletRequest request,HttpServletResponse response)
     {
-//        Cookie[] list = request.getCookies();
-//        System.out.println(list);
-//        @ModelAttribute LoginForm form,Model model,
-//        List<Cookie> list = Arrays.stream(request.getCookies()).toList();
-//        System.out.println(list);
-//        //wysylajac requesta sprawdzasz czy uzytkownik ma ciastko jesli nie to
-//        if(cookieService.checkCookie(request))
-//        {
-//            return "chat.html";
-//        }
-//
-//        model.addAttribute("infoForUser","Your Token Was Expired,try login again");
-//        model.addAttribute("LoginForm", new LoginForm());
-        return "chat.html";
+        Map<String,String> mapOfCookie = new HashMap<>();
+        List<Cookie> cookieList = Arrays.stream(request.getCookies()).toList();
+        cookieList.stream().forEach(cookie -> mapOfCookie.put(cookie.getName(),cookie.getValue()));
+        cookieList.stream().forEach(cookie -> System.out.println(cookie.getName()+" wartosc: " + cookie.getValue()));
+        if(mapOfCookie.containsKey("ID_SESSION"))
+        {
+            //wysylajac requesta sprawdzasz czy uzytkownik ma ciastko jesli nie to
+            if(cookieService.checkCookie(request))
+            {
+                return "chat.html";
+            }
+        }
+
+
+        model.addAttribute("infoForUser","Your Token Was Expired,try login again");
+        model.addAttribute("LoginForm", new LoginForm());
+        return "login.html";
     }
 
 
