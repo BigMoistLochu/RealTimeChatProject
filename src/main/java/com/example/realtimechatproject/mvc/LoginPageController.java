@@ -1,9 +1,8 @@
 package com.example.realtimechatproject.mvc;
 
-import com.example.realtimechatproject.NewFiczer.CookieService;
-import com.example.realtimechatproject.NewFiczer.HttpResponseCreator;
-import com.example.realtimechatproject.NewFiczer.HttpResponseService;
-import com.example.realtimechatproject.NewFiczer.Tescik;
+import com.example.realtimechatproject.services.cookieService.CookieService;
+import com.example.realtimechatproject.services.httpResponseCreatorService.HttpResponseCreator;
+import com.example.realtimechatproject.services.httpResponseCreatorService.HttpResponseService;
 import com.example.realtimechatproject.models.LoginForm;
 import com.example.realtimechatproject.models.RegisterForm;
 import com.example.realtimechatproject.services.controllersServices.LoginPageService;

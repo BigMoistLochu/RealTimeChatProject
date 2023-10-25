@@ -1,4 +1,4 @@
-package com.example.realtimechatproject.NewFiczer;
+package com.example.realtimechatproject.services.cookieService;
 
 import com.example.realtimechatproject.services.restControllersServices.UserService;
 import com.example.realtimechatproject.validations.HashingEmail;
