@@ -22,7 +22,6 @@ public class CookieService {
 
     public boolean checkCookie(HttpServletRequest request)
     {
-        System.out.println(request.getCookies()[0]);
 
         Map<String,String> mapOfCookie = new HashMap<>();
 
@@ -42,9 +41,6 @@ public class CookieService {
 
     public Cookie injectCookieToUser(String login)
     {
-        System.out.println("jestem w CookieToUser");
-        System.out.println(userService.isUserExists(login));
-        System.out.println(login);
         if(userService.isUserExists(login))
         {
             String userToken = userService.getUserByLogin(login).getToken();

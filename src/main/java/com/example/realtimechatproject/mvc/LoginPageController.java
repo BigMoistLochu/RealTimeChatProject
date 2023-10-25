@@ -85,6 +85,8 @@ public class LoginPageController {
                .setForm(form)
                .setHttpServletResponse(response)
                .build();
+
+
        return httpResponseService.setTheHttpResponseFilter(responeFilter)
                .CordinatorOfEverything()
                .getHttpServletResponse().getContentType();
