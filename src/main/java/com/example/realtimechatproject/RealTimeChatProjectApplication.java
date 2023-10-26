@@ -32,19 +32,7 @@ public class RealTimeChatProjectApplication implements CommandLineRunner {
         System.out.println(userRepository.getFirstBySurnameAndName("Krok","Konrad"));
         System.out.println(userRepository.existsByLogin("4740911@wp.pl"));
         String cookie = "cokies";
-        try
-        {
-            if(cookie.equals("cokiesd"))
-            {
-                System.out.println(cookie);
-            }
-            else
-                throw new CookieException("Bad Ciastko In The Futhure");
 
-        }catch (RuntimeException e)
-        {
-            System.out.println(e.getMessage());
-        }
 
     }
 

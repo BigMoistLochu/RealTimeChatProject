@@ -63,7 +63,7 @@ public class LoginPageController {
         if(mapOfCookie.containsKey("ID_SESSION"))
         {
             //wysylajac requesta sprawdzasz czy uzytkownik ma ciastko jesli nie to
-            if(cookieService.checkCookie(request))
+            if(cookieService.checkCookieSessionId(request))
             {
                 return "chat.html";
             }

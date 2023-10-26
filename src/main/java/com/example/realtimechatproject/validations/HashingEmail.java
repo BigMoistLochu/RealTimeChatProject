@@ -15,7 +15,6 @@ public class HashingEmail{
 
     private HashingEmail(){}
 
-
     public static String GenereteNewToken(String password){
         Logger logger = LoggerFactory.getLogger(HashingEmail.class);
         try {
