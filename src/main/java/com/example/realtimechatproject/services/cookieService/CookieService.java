@@ -15,8 +15,6 @@ public class CookieService {
     UserService userService;
 
 
-
-
     public boolean checkCookieSessionId(HttpServletRequest request)
     {
 

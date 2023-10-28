@@ -26,9 +26,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class LoginPageController {
 
-
-    private LoginPageService loginPageService;
-
     private RegisterPageService registerPageService;
 
     private HttpResponseService httpResponseService;
